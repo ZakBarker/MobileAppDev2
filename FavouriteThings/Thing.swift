@@ -30,11 +30,7 @@ class Thing: ObservableObject, Identifiable{
     /// Notes for Thing
     @Published var notes: String
     /// Stores image url passed in by user.
-    @Published var imageURL: String { didSet {
-        /// Calls method to test if Url input is valid
-        self.imageFromUrl(self.imageURL)
-        }
-    }
+    @Published var imageURL: String
     /// Stores a list of urls which correspond to Images that have already been downloaded
     @Published var imageCache: Dictionary<URL, Image> = [:]
     

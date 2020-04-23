@@ -17,40 +17,40 @@ struct DetailView: View {
     var dvm: DetailViewModel
     var body: some View {
                 ZStack{
-                    Color(hue: 0.584, saturation: 0.889, brightness: 0.504).edgesIgnoringSafeArea(.all)
+                    Color(hue: 0, saturation: 0, brightness: 0).edgesIgnoringSafeArea(.all)
                     VStack(alignment: .leading) {
                         Text(dvm.notes).font(.largeTitle)
                             .fontWeight(.bold).foregroundColor(Color(red: 1, green: 1, blue: 1, opacity: 0.9)).offset(y: -60)
-                        TextField(dvm.notesPlaceholder, text: $wave.notes).offset(y: -70).textFieldStyle(RoundedBorderTextFieldStyle())
-                        TextField(dvm.imagePlaceholder, text: $wave.imageURL, onCommit: {self.wave.imageFromUrl(self.wave.imageURL)}).offset(y: -70).textFieldStyle(RoundedBorderTextFieldStyle())
+                        TextField(dvm.notesPlaceholder, text: $thing.notes).offset(y: -70).textFieldStyle(RoundedBorderTextFieldStyle())
+                        TextField(dvm.imagePlaceholder, text: $thing.imageURL, onCommit: {self.thing.imageFromUrl(self.thing.imageURL)}).offset(y: -70).textFieldStyle(RoundedBorderTextFieldStyle())
                         // Image is displayed by calling wave method which returns an Image type.
-                        wave.displayImageDetail().resizable().aspectRatio(contentMode: .fit).frame(width: 370.0).border(Color(hue: 0.584, saturation: 0.889, brightness: 0.504), width: /*@START_MENU_TOKEN@*/1/*@END_MENU_TOKEN@*/).offset(y: -70)
-                        TextField(dvm.namePlaceholder, text: $wave.name)
+                        thing.displayImageDetail().resizable().aspectRatio(contentMode: .fit).frame(width: 370.0).border(Color(hue: 0.584, saturation: 0.889, brightness: 0.504), width: /*@START_MENU_TOKEN@*/1/*@END_MENU_TOKEN@*/).offset(y: -70)
+                        TextField(dvm.namePlaceholder, text: $thing.name)
                             .font(.largeTitle)
                             .foregroundColor(Color(red: 1, green: 1, blue: 1, opacity: 0.9)).offset(y: -70)
-                        TextField(dvm.countryPlaceholder + "\n", text: $wave.country)
+                        TextField(dvm.likePlaceholder + "\n", text: $thing.like)
                             .font(.title)
                             .foregroundColor(Color(red: 1, green: 1, blue: 1, opacity: 0.9)).offset(y: -70)
                         HStack {
                             Text(dvm.type)
                                 .fontWeight(.bold)
                                 .multilineTextAlignment(.trailing).foregroundColor(Color(red: 1, green: 1, blue: 1, opacity: 0.9)).offset(y: -80)
-                            TextField(dvm.typePlaceholder, text: $wave.type)
+                            TextField(dvm.typePlaceholder, text: $thing.type)
                                 .multilineTextAlignment(.leading).foregroundColor(Color(red: 1, green: 1, blue: 1, opacity: 0.9)).offset(y: -80)
                         }
                         HStack {
-                            Text(dvm.left)
+                            Text(dvm.purpose)
                                 .fontWeight(.bold)
                                 .multilineTextAlignment(.trailing).foregroundColor(Color(red: 1, green: 1, blue: 1, opacity: 0.9)).offset(y: -80)
-                            TextField(dvm.leftPlaceholder, text: $wave.left)
+                            TextField(dvm.purposePlaceholder, text: $thing.purpose)
                                 .multilineTextAlignment(.leading).foregroundColor(Color(red: 1, green: 1, blue: 1, opacity: 0.9)).offset(y: -80)
         
                         }
                         HStack {
-                            Text(dvm.right)
+                            Text(dvm.description)
                                 .fontWeight(.bold)
                                 .multilineTextAlignment(.trailing).foregroundColor(Color(red: 1, green: 1, blue: 1, opacity: 0.9)).offset(y: -80)
-                            TextField(dvm.rightPlaceholder, text: $wave.right)
+                            TextField(dvm.descriptionPlaceholder, text: $thing.description)
                                 .multilineTextAlignment(.leading).foregroundColor(Color(red: 1, green: 1, blue: 1, opacity: 0.9)).offset(y: -80)
                         }
                     }
