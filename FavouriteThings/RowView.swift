@@ -8,14 +8,20 @@
 
 import SwiftUI
 
-struct RowView: View {
-    var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
-    }
-}
+// Row View stores all UI instructions for each individual row. Each row corresponds to a single Thing which is recieved from the Master View
 
-struct RowView_Previews: PreviewProvider {
-    static var previews: some View {
-        RowView()
+struct RowView: View {
+    // Stores information for specific things for display
+    @ObservedObject var thing: Thing
+    var body: some View {
+        HStack{
+            // Called function which dynamically changes the display image based on input from Detail View.
+            wave.displayImageRow().resizable().frame(width: 70, height: 50)
+            VStack(alignment: .leading){
+                Text(thing.name).bold()
+                Text(thing.like)
+                    .font(.footnote)
+            }
+        }
     }
 }

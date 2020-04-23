@@ -8,7 +8,7 @@
 
 import Foundation
 
-/// Class contains an array which stores data objects of the type Wave. This will be used to provide details to each view.
+/// Class contains an array which stores data objects of the type Thing. This will be used to provide details to each view.
 class ViewModel: ObservableObject, Identifiable{
     /// Stores data objects of type Wave
     @Published var things: [Thing] = []
