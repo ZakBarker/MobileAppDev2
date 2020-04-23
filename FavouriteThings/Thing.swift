@@ -7,6 +7,8 @@
 //
 
 import Foundation
+import UIKit
+import SwiftUI
 
 // Class Stores all information relating to particular Things that the user likes. This data will be passed to the DetailView for display.
 
