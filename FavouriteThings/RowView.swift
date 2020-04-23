@@ -16,7 +16,7 @@ struct RowView: View {
     var body: some View {
         HStack{
             // Called function which dynamically changes the display image based on input from Detail View.
-            wave.displayImageRow().resizable().frame(width: 70, height: 50)
+            thing.displayImageRow().resizable().frame(width: 70, height: 50)
             VStack(alignment: .leading){
                 Text(thing.name).bold()
                 Text(thing.like)

@@ -12,7 +12,7 @@ import SwiftUI
 
 // Class Stores all information relating to particular Things that the user likes. This data will be passed to the DetailView for display.
 
-class Thing: Identifiable, Codable{
+class Thing: ObservableObject, Identifiable{
     /// Name of Thing
     @Published var name: String
     /// Why you Like the Thing
