@@ -16,7 +16,6 @@ struct ContentView: View {
     var body: some View {
         NavigationView{
             MasterView(viewModel: viewModel)
-                .navigationBarTitle("World Breaks")
                 .navigationBarItems(
                     leading: EditButton(),
                     trailing: Button(
