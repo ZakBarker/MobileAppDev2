@@ -12,7 +12,7 @@ import SwiftUI
 
 // Class Stores all information relating to particular Things that the user likes. This data will be passed to the DetailView for display.
 
-class Thing: ObservableObject, Identifiable{
+class Thing: ObservableObject, Identifiable, Codable{
     /// Name of Thing
     @Published var name: String
     /// Why you Like the Thing
@@ -58,6 +58,15 @@ class Thing: ObservableObject, Identifiable{
         self.notes = notes
         self.imageURL = imageURL
     }
+    
+//    required init(from decoder: Decoder) throws {
+//        
+//    }
+//    
+//    func encode(to encoder: Encoder) throws {
+//        
+//    }
+    
     
     /// Function recieves a string and attempts to convert this to a URL. Function then checks to make sure URL is an image and downloads that image. Image and URL are then stored in imageCache
     func imageFromUrl(_ imageUrl: String){

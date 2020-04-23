@@ -39,6 +39,3 @@ struct MasterView: View {
         .navigationBarTitle(mode?.wrappedValue == .active ? "" : viewModel.title)
     }
 }
-
-
-//            .navigationBarTitle(mode?.wrappedValue == .active ? "" : Text(viewModel.title))

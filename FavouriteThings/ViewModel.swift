@@ -9,7 +9,7 @@
 import Foundation
 
 /// Class contains an array which stores data objects of the type Thing. This will be used to provide details to each view.
-class ViewModel: ObservableObject, Identifiable{
+class ViewModel: ObservableObject, Identifiable, Codable{
     /// Stores Title of App
     @Published var title: String
     /// Stores data objects of type Thing
@@ -25,6 +25,14 @@ class ViewModel: ObservableObject, Identifiable{
     init(title: String = "Favourite Things"){
         self.title = title
     }
+    
+//    required init(from decoder: Decoder) throws {
+//        
+//    }
+//    
+//    func encode(to encoder:Encoder) throws {
+//        
+//    }
     
     /// Function appends new thing to things array
     func addThing(){

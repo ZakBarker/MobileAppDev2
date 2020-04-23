@@ -9,6 +9,11 @@
 import UIKit
 import SwiftUI
 
+let fileManager = FileManager.default
+let urls = fileManager.urls(for: .documentDirectory, in: .userDomainMask)
+let documentFolderURL = urls.first!
+let fileURL = documentFolderURL.appendingPathComponent("favouriteThings.json")
+
 class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
     var window: UIWindow?

@@ -8,7 +8,7 @@
 
 import Foundation
 /// Class contains embedded information to be displayed within the view. This is useful in the case that information must be stored in several languages
-class DetailViewModel: ObservableObject, Identifiable{
+class DetailViewModel: ObservableObject, Identifiable, Codable{
     /// Embedded information for notes field
     @Published var notes: String
     /// Embedded information for notes placeholder
@@ -61,4 +61,13 @@ class DetailViewModel: ObservableObject, Identifiable{
         self.descriptionPlaceholder = descriptionPlaceholder
         self.imagePlaceholder = imagePlaceholder
     }
+    
+//    required init(from decoder: Decoder) throws {
+//        
+//    }
+//    
+//    func encode(to encoder: Encoder) throws {
+//
+//    }
+    
 }
