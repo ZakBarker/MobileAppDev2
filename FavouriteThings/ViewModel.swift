@@ -20,7 +20,7 @@ class ViewModel: ObservableObject, Identifiable{
     
     /// Function appends new wave to waves array
     func addThing(){
-        self.things.append(Thing(name: "Thing", like: "You Like", type: "", purpose: "", description: "", staticImage: "snapper"))
+        self.things.append(Thing(name: "Thing", like: "You Like", type: "", purpose: "", description: "", staticImage: "duck"))
     }
     
     /// Function removes wave from waves array
