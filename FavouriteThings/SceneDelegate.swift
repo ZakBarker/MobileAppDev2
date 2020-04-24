@@ -49,6 +49,9 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
             print("Could not load \(fileURL)")
         }
 
+        for thing in viewModel.things {
+            thing.imageFromUrl(thing.dynamicImage)
+        }
 //        viewModel.things.append(thing0)
 //        viewModel.things.append(thing1)
 //        viewModel.things.append(thing2)
@@ -76,19 +79,16 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     }
 
     func sceneDidBecomeActive(_ scene: UIScene) {
-        print("Become Active")
         // Called when the scene has moved from an inactive state to an active state.
         // Use this method to restart any tasks that were paused (or not yet started) when the scene was inactive.
     }
 
     func sceneWillResignActive(_ scene: UIScene) {
-        print("Resign Active")
         // Called when the scene will move from an active state to an inactive state.
         // This may occur due to temporary interruptions (ex. an incoming phone call).
     }
 
     func sceneWillEnterForeground(_ scene: UIScene) {
-        print("Enter FG")
         // Called as the scene transitions from the background to the foreground.
         // Use this method to undo the changes made on entering the background.
     }
@@ -97,7 +97,6 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         // Called as the scene transitions from the foreground to the background.
         // Use this method to save data, release shared resources, and store enough scene-specific state information
         // to restore the scene back to its current state.
-        print("Enter BG")
         writeData(viewModel)
     }
 
