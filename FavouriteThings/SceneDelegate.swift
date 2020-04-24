@@ -17,22 +17,29 @@ let fileURL = documentFolderURL.appendingPathComponent("favouriteThings.json")
 class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
     var window: UIWindow?
-    let viewModel = ViewModel()
-    let dvm = DetailViewModel()
-
-    let thing0 = Thing(name: "Drawing", like: "It is cool", type: "Medium", purpose: "Creating something", description: "Simple medium which requires different shades of pencil", staticImage: "draw")
-    let thing1 = Thing(name: "Forest", like: "They are green", type: "Landscape", purpose: "To give life", description: "Forests are pretty sweet", staticImage: "forest")
-    let thing2 = Thing(name: "The Robots", like: "All around excellent", type: "Artists", purpose: "To create mad beats", description: "The frenchmen are pioneers of EDM", staticImage: "daft")
+    var viewModel = ViewModel()
+//    let dvm = DetailViewModel()
+//
+//    let thing0 = Thing(name: "Drawing", like: "It is cool", type: "Medium", purpose: "Creating something", description: "Simple medium which requires different shades of pencil", staticImage: "draw")
+//    let thing1 = Thing(name: "Forest", like: "They are green", type: "Landscape", purpose: "To give life", description: "Forests are pretty sweet", staticImage: "forest")
+//    let thing2 = Thing(name: "The Robots", like: "All around excellent", type: "Artists", purpose: "To create mad beats", description: "The frenchmen are pioneers of EDM", staticImage: "daft")
     
     func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
-        // Use this method to optionally configure and attach the UIWindow `window` to the provided UIWindowScene `scene`.
-        // If using a storyboard, the `window` property will automatically be initialized and attached to the scene.
-        // This delegate does not imply the connecting scene or session are new (see `application:configurationForConnectingSceneSession` instead).
+        
+        do {
+            let t = try Data(contentsOf: fileURL)
+            let decoder = JSONDecoder()
+            let decodedModel = try decoder.decode(ViewModel.self, from:t)
+            print(decodedModel.things.first?.name ?? "no products")
+            viewModel = decodedModel
+        } catch {
+            print("Could not load \(fileURL)")
+        }
 
-        viewModel.things.append(thing0)
-        viewModel.things.append(thing1)
-        viewModel.things.append(thing2)
-        viewModel.detailViewModel.append(dvm)
+//        viewModel.things.append(thing0)
+//        viewModel.things.append(thing1)
+//        viewModel.things.append(thing2)
+//        viewModel.detailViewModel.append(dvm)
         
         
         // Create the SwiftUI view that provides the window contents.
@@ -73,6 +80,14 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         // Called as the scene transitions from the foreground to the background.
         // Use this method to save data, release shared resources, and store enough scene-specific state information
         // to restore the scene back to its current state.
+        
+        do {
+            let json = JSONEncoder()
+            let data = try json.encode(viewModel)
+            try data.write(to: fileURL)
+        } catch {
+            print("Could not write file - \(error)")
+        }
     }
 
 
