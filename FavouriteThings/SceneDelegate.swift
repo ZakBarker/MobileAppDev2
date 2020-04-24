@@ -14,12 +14,24 @@ let urls = fileManager.urls(for: .documentDirectory, in: .userDomainMask)
 let documentFolderURL = urls.first!
 let fileURL = documentFolderURL.appendingPathComponent("favouriteThings.json")
 
+/// Function encodes View Model and writes it to a JSON file.
+func writeData(_ model: ViewModel){
+    do {
+        let json = JSONEncoder()
+        let data = try json.encode(model)
+        try data.write(to: fileURL)
+        print("This Happened")
+    } catch {
+        print("Could not write file - \(error)")
+    }
+}
+
+
 class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
     var window: UIWindow?
     var viewModel = ViewModel()
-//    let dvm = DetailViewModel()
-//
+
 //    let thing0 = Thing(name: "Drawing", like: "It is cool", type: "Medium", purpose: "Creating something", description: "Simple medium which requires different shades of pencil", staticImage: "draw")
 //    let thing1 = Thing(name: "Forest", like: "They are green", type: "Landscape", purpose: "To give life", description: "Forests are pretty sweet", staticImage: "forest")
 //    let thing2 = Thing(name: "The Robots", like: "All around excellent", type: "Artists", purpose: "To create mad beats", description: "The frenchmen are pioneers of EDM", staticImage: "daft")
@@ -30,7 +42,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
             let t = try Data(contentsOf: fileURL)
             let decoder = JSONDecoder()
             let decodedModel = try decoder.decode(ViewModel.self, from:t)
-            print(decodedModel.things.first?.name ?? "no products")
+            print(decodedModel.things.first?.name ?? "No Items Here")
             viewModel = decodedModel
             print("Made it to here")
         } catch {
@@ -40,7 +52,6 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 //        viewModel.things.append(thing0)
 //        viewModel.things.append(thing1)
 //        viewModel.things.append(thing2)
-//        viewModel.detailViewModel.append(dvm)
         
         
         // Create the SwiftUI view that provides the window contents.
@@ -56,7 +67,8 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     }
 
     func sceneDidDisconnect(_ scene: UIScene) {
-        print("Disconnent")
+        writeData(viewModel)
+
         // Called as the scene is being released by the system.
         // This occurs shortly after the scene enters the background, or when its session is discarded.
         // Release any resources associated with this scene that can be re-created the next time the scene connects.
@@ -86,14 +98,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         // Use this method to save data, release shared resources, and store enough scene-specific state information
         // to restore the scene back to its current state.
         print("Enter BG")
-        do {
-            let json = JSONEncoder()
-            let data = try json.encode(viewModel)
-            try data.write(to: fileURL)
-            print("This Happened")
-        } catch {
-            print("Could not write file - \(error)")
-        }
+        writeData(viewModel)
     }
 
 

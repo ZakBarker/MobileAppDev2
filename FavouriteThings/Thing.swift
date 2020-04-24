@@ -34,10 +34,10 @@ class Thing: ObservableObject, Identifiable, Codable{
     /// Stores a list of urls which correspond to Images that have already been downloaded
     @Published var imageCache: Dictionary<URL, Image> = [:]
     
-    /// Used to initialize an instance of type Wave
+    /// Used to initialize an instance of type Thing
     /// - Parameters:
-    ///     - name: Name of Wave
-    ///     - like: Why you Like the THing
+    ///     - name: Name of Thing
+    ///     - like: Why you Like the Thing
     ///     - type: Type of Thing
     ///     - purpose: Purpose of Thing
     ///     - description: Description of Thing
@@ -87,14 +87,14 @@ class Thing: ObservableObject, Identifiable, Codable{
     func encode(to encoder: Encoder) throws {
         var container = encoder.container(keyedBy: CodingKeys.self)
         try container.encode(name, forKey: .name)
-        try container.encode(name, forKey: .like)
-        try container.encode(name, forKey: .type)
-        try container.encode(name, forKey: .purpose)
-        try container.encode(name, forKey: .description)
-        try container.encode(name, forKey: .staticImage)
-        try container.encode(name, forKey: .dynamicImage)
-        try container.encode(name, forKey: .notes)
-        try container.encode(name, forKey: .imageURL)
+        try container.encode(like, forKey: .like)
+        try container.encode(type, forKey: .type)
+        try container.encode(purpose, forKey: .purpose)
+        try container.encode(description, forKey: .description)
+        try container.encode(staticImage, forKey: .staticImage)
+        try container.encode(dynamicImage, forKey: .dynamicImage)
+        try container.encode(notes, forKey: .notes)
+        try container.encode(imageURL, forKey: .imageURL)
     }
     
     
