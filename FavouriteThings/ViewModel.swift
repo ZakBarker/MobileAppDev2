@@ -31,13 +31,13 @@ class ViewModel: ObservableObject, Identifiable, Codable{
     enum CodingKeys: String, CodingKey {
         case title
         case things
-        case type
+        case detailViewModel
     }
 
     required init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
         title = try container.decode(String.self, forKey: .title)
-        things = try container.decode([Product].self, forKey: .things)
+        things = try container.decode([Thing].self, forKey: .things)
         detailViewModel = try container.decode([DetailViewModel].self, forKey: .detailViewModel)
     }
 
