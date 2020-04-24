@@ -24,15 +24,29 @@ class ViewModel: ObservableObject, Identifiable, Codable{
     
     init(title: String = "Favourite Things"){
         self.title = title
+        things = [Thing]()
+        detailViewModel = [DetailViewModel]()
     }
     
-//    required init(from decoder: Decoder) throws {
-//        
-//    }
-//    
-//    func encode(to encoder:Encoder) throws {
-//        
-//    }
+    enum CodingKeys: String, CodingKey {
+        case title
+        case things
+        case type
+    }
+
+    required init(from decoder: Decoder) throws {
+        let container = try decoder.container(keyedBy: CodingKeys.self)
+        title = try container.decode(String.self, forKey: .title)
+        things = try container.decode([Product].self, forKey: .things)
+        detailViewModel = try container.decode([DetailViewModel].self, forKey: .detailViewModel)
+    }
+
+    func encode(to encoder: Encoder) throws {
+        var container = encoder.container(keyedBy: CodingKeys.self)
+        try container.encode(title, forKey: .title)
+        try container.encode(things, forKey: .things)
+        try container.encode(detailViewModel, forKey: .detailViewModel)
+    }
     
     /// Function appends new thing to things array
     func addThing(){
