@@ -69,7 +69,6 @@ class Thing: ObservableObject, Identifiable, Codable{
         case dynamicImage
         case notes
         case imageURL
-        case imageCache
     }
     
     required init(from decoder: Decoder) throws {

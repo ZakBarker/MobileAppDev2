@@ -62,12 +62,48 @@ class DetailViewModel: ObservableObject, Identifiable, Codable{
         self.imagePlaceholder = imagePlaceholder
     }
     
-//    required init(from decoder: Decoder) throws {
-//        
-//    }
-//    
-//    func encode(to encoder: Encoder) throws {
-//
-//    }
+    enum CodingKeys: String, CodingKey {
+        case notes
+        case notesPlaceholder
+        case type
+        case purpose
+        case description
+        case namePlaceholder
+        case likePlaceholder
+        case typePlaceholder
+        case purposePlaceholder
+        case descriptionPlaceholder
+        case imagePlaceholder
+    }
+
+    required init(from decoder: Decoder) throws {
+        let container = try decoder.container(keyedBy: CodingKeys.self)
+        notes = try container.decode(String.self, forKey: .notes)
+        notesPlaceholder = try container.decode(String.self, forKey: .notesPlaceholder)
+        type = try container.decode(String.self, forKey: .type)
+        purpose = try container.decode(String.self, forKey: .purpose)
+        description = try container.decode(String.self, forKey: .description)
+        namePlaceholder = try container.decode(String.self, forKey: .namePlaceholder)
+        likePlaceholder = try container.decode(String.self, forKey: .likePlaceholder)
+        typePlaceholder = try container.decode(String.self, forKey: .typePlaceholder)
+        purposePlaceholder = try container.decode(String.self, forKey: .purposePlaceholder)
+        descriptionPlaceholder = try container.decode(String.self, forKey: .descriptionPlaceholder)
+        imagePlaceholder = try container.decode(String.self, forKey: .imagePlaceholder)
+    }
+
+    func encode(to encoder: Encoder) throws {
+        var container = encoder.container(keyedBy: CodingKeys.self)
+        try container.encode(notes, forKey: .notes)
+        try container.encode(notesPlaceholder, forKey: .notesPlaceholder)
+        try container.encode(type, forKey: .type)
+        try container.encode(purpose, forKey: .purpose)
+        try container.encode(description, forKey: .description)
+        try container.encode(namePlaceholder, forKey: .namePlaceholder)
+        try container.encode(likePlaceholder, forKey: .likePlaceholder)
+        try container.encode(typePlaceholder, forKey: .typePlaceholder)
+        try container.encode(purposePlaceholder, forKey: .purposePlaceholder)
+        try container.encode(descriptionPlaceholder, forKey: .descriptionPlaceholder)
+        try container.encode(imagePlaceholder, forKey: .imagePlaceholder)
+    }
     
 }
