@@ -45,7 +45,6 @@ class Thing: ObservableObject, Identifiable, Codable{
     ///     - dynamicImage: Stores Url for display of dynamic images if the user provides one
     ///     - notes: Notes for Thing
     ///     - imageURL: Stores image url passed in by user.
-    ///     - imageCache: Stores a list of urls which correspond to Images that have already been downloaded
     
     init(name: String, like: String, type: String, purpose: String, description: String, staticImage: String, dynamicImage: String = "", notes: String = "", imageURL: String = ""){
         self.name = name
@@ -59,6 +58,7 @@ class Thing: ObservableObject, Identifiable, Codable{
         self.imageURL = imageURL
     }
     
+    /// Creates a set of keys for use while encoding and decoding data
     enum CodingKeys: String, CodingKey {
         case name
         case like
@@ -71,6 +71,8 @@ class Thing: ObservableObject, Identifiable, Codable{
         case imageURL
     }
     
+    /// - Note: Refer to init function for parameters
+    /// Function is used to read decode and read data from JSON file
     required init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
         name = try container.decode(String.self, forKey: .name)
@@ -84,6 +86,7 @@ class Thing: ObservableObject, Identifiable, Codable{
         imageURL = try container.decode(String.self, forKey: .imageURL)
     }
     
+    /// Function is used to prepare data to be written to JSON file
     func encode(to encoder: Encoder) throws {
         var container = encoder.container(keyedBy: CodingKeys.self)
         try container.encode(name, forKey: .name)
@@ -98,7 +101,10 @@ class Thing: ObservableObject, Identifiable, Codable{
     }
     
     
-    /// Function recieves a string and attempts to convert this to a URL. Function then checks to make sure URL is an image and downloads that image. Image and URL are then stored in imageCache
+    /// Function recieves a string and attempts to convert this to a URL. Function then checks to make sure URL is an image and downloads that image. Image and URL are then stored in imageCache for later use
+    /// - Parameters:
+    ///     - imageUrl: A Url in the form of a string
+    
     func imageFromUrl(_ imageUrl: String){
         // Convert String to URL
         guard let url = URL(string: imageUrl)
@@ -121,6 +127,8 @@ class Thing: ObservableObject, Identifiable, Codable{
     }
     
     /// Function provides image for display in the detail view
+    ///  - Note: Replace the Image function within the **Detail View** with this function to display the desired image
+    /// - Returns: An Image
     func displayImageDetail() -> Image{
         // If url provided can not be converted to URL, display placeholder image.
         guard let url = URL(string: self.imageURL)
@@ -146,6 +154,8 @@ class Thing: ObservableObject, Identifiable, Codable{
     }
     
     /// Function provides image for display in Row View
+    ///  - Note: Replace the Image function within the **Row View** with this function to display the desired image
+    /// - Returns: An Image
     func displayImageRow() -> Image{
         // If dynamicImage string can not be converted to URL, display placeholder image.
         guard let url = URL(string: self.dynamicImage)

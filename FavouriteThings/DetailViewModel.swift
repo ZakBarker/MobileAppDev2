@@ -62,6 +62,7 @@ class DetailViewModel: ObservableObject, Identifiable, Codable{
         self.imagePlaceholder = imagePlaceholder
     }
     
+    /// Creates a set of keys for use while encoding and decoding data
     enum CodingKeys: String, CodingKey {
         case notes
         case notesPlaceholder
@@ -76,6 +77,8 @@ class DetailViewModel: ObservableObject, Identifiable, Codable{
         case imagePlaceholder
     }
 
+    /// - Note: Refer to init function for parameters
+    /// Function is used to read decode and read data from JSON file
     required init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
         notes = try container.decode(String.self, forKey: .notes)
@@ -91,6 +94,7 @@ class DetailViewModel: ObservableObject, Identifiable, Codable{
         imagePlaceholder = try container.decode(String.self, forKey: .imagePlaceholder)
     }
 
+    /// Function is used to prepare data to be written to JSON file
     func encode(to encoder: Encoder) throws {
         var container = encoder.container(keyedBy: CodingKeys.self)
         try container.encode(notes, forKey: .notes)

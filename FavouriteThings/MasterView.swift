@@ -28,7 +28,7 @@ struct MasterView: View {
                         // Row View Stores functionality and UI instructions for each individual row
                         RowView(thing: thing)
                     }
-                    // On deletion of Instance, call function which removes Instance of wave from Wave array in View Model
+                    // On deletion of Instance, call function which removes Instance of thing from Thing array in View Model
                 }.onDelete { indices in
                     self.viewModel.removeThing(indices)
                 }.onMove { (indices, destination) in

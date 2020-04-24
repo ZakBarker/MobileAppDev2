@@ -28,12 +28,15 @@ class ViewModel: ObservableObject, Identifiable, Codable{
         detailViewModel = DetailViewModel()
     }
     
+    /// Creates a set of keys for use while encoding and decoding data
     enum CodingKeys: String, CodingKey {
         case title
         case things
         case detailViewModel
     }
 
+    /// - Note: Refer to init function for parameters
+    /// Function is used to read decode and read data from JSON file
     required init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
         title = try container.decode(String.self, forKey: .title)
@@ -41,6 +44,7 @@ class ViewModel: ObservableObject, Identifiable, Codable{
         detailViewModel = try container.decode(DetailViewModel.self, forKey: .detailViewModel)
     }
 
+    /// Function is used to prepare data to be written to JSON file
     func encode(to encoder: Encoder) throws {
         var container = encoder.container(keyedBy: CodingKeys.self)
         try container.encode(title, forKey: .title)
@@ -54,6 +58,8 @@ class ViewModel: ObservableObject, Identifiable, Codable{
     }
     
     /// Function removes thing from things array
+    /// - Parameters:
+    ///     - indices: The indices within the Index Set of item which has been selected for removal
     func removeThing(_ indices: IndexSet){
         indices.forEach { things.remove(at: $0) }
     }

@@ -8,7 +8,7 @@
 
 import SwiftUI
 
-// DetailView Receives instance of Class Wave. This instance stores all of the data for a specific wave and displays this data as GUI implementation specifiec.
+// DetailView Receives instance of Class Thing. This instance stores all of the data for a specific thing and displays this data as GUI implementation specified.
 
 struct DetailView: View {
     // @ObservableObject variable created for the purpose of Binding with TextFields
@@ -23,7 +23,7 @@ struct DetailView: View {
                             .foregroundColor(Color(red: 1, green: 1, blue: 1, opacity: 0.9)).offset(y: -60)
                         TextField(dvm.notesPlaceholder, text: $thing.notes).offset(y: -70).textFieldStyle(RoundedBorderTextFieldStyle())
                         TextField(dvm.imagePlaceholder, text: $thing.imageURL, onCommit: {self.thing.imageFromUrl(self.thing.imageURL)}).offset(y: -70).textFieldStyle(RoundedBorderTextFieldStyle())
-                        // Image is displayed by calling wave method which returns an Image type.
+                        // Image is displayed by calling thing method which returns an Image type.
                         thing.displayImageDetail().resizable().aspectRatio(contentMode: .fit).frame(width: 370.0).border(Color(hue: 0.584, saturation: 0.889, brightness: 0.504), width: /*@START_MENU_TOKEN@*/1/*@END_MENU_TOKEN@*/).offset(y: -70)
                         TextField(dvm.namePlaceholder, text: $thing.name)
                             .font(.system(size: 30, weight: .heavy, design: .default))

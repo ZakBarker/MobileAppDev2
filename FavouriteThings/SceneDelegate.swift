@@ -9,12 +9,15 @@
 import UIKit
 import SwiftUI
 
+// Code identifies location of data storage file amongst application documents
 let fileManager = FileManager.default
 let urls = fileManager.urls(for: .documentDirectory, in: .userDomainMask)
 let documentFolderURL = urls.first!
 let fileURL = documentFolderURL.appendingPathComponent("favouriteThings.json")
 
 /// Function encodes View Model and writes it to a JSON file.
+/// - Parameters:
+///     - model: Typically going to be ViewModel or any data model which needs to be written to JSON
 func writeData(_ model: ViewModel){
     do {
         let json = JSONEncoder()
@@ -31,13 +34,10 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
     var window: UIWindow?
     var viewModel = ViewModel()
-
-//    let thing0 = Thing(name: "Drawing", like: "It is cool", type: "Medium", purpose: "Creating something", description: "Simple medium which requires different shades of pencil", staticImage: "draw")
-//    let thing1 = Thing(name: "Forest", like: "They are green", type: "Landscape", purpose: "To give life", description: "Forests are pretty sweet", staticImage: "forest")
-//    let thing2 = Thing(name: "The Robots", like: "All around excellent", type: "Artists", purpose: "To create mad beats", description: "The frenchmen are pioneers of EDM", staticImage: "daft")
     
     func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
         
+        // Code Reads data from JSON file and restores ViewModel upon initialisation of app
         do {
             let t = try Data(contentsOf: fileURL)
             let decoder = JSONDecoder()
@@ -49,12 +49,10 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
             print("Could not load \(fileURL)")
         }
 
+        // Section of code restores Images to all Things which are using a dynamic image
         for thing in viewModel.things {
             thing.imageFromUrl(thing.dynamicImage)
         }
-//        viewModel.things.append(thing0)
-//        viewModel.things.append(thing1)
-//        viewModel.things.append(thing2)
         
         
         // Create the SwiftUI view that provides the window contents.
