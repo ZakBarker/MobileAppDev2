@@ -59,13 +59,44 @@ class Thing: ObservableObject, Identifiable, Codable{
         self.imageURL = imageURL
     }
     
-//    required init(from decoder: Decoder) throws {
-//        
-//    }
-//    
-//    func encode(to encoder: Encoder) throws {
-//        
-//    }
+    enum CodingKeys: String, CodingKey {
+        case name
+        case like
+        case type
+        case purpose
+        case description
+        case staticImage
+        case dynamicImage
+        case notes
+        case imageURL
+        case imageCache
+    }
+    
+    required init(from decoder: Decoder) throws {
+        let container = try decoder.container(keyedBy: CodingKeys.self)
+        name = try container.decode(String.self, forKey: .name)
+        like = try container.decode(String.self, forKey: .like)
+        type = try container.decode(String.self, forKey: .type)
+        purpose = try container.decode(String.self, forKey: .purpose)
+        description = try container.decode(String.self, forKey: .description)
+        staticImage = try container.decode(String.self, forKey: .staticImage)
+        dynamicImage = try container.decode(String.self, forKey: .dynamicImage)
+        notes = try container.decode(String.self, forKey: .notes)
+        imageURL = try container.decode(String.self, forKey: .imageURL)
+    }
+    
+    func encode(to encoder: Encoder) throws {
+        var container = encoder.container(keyedBy: CodingKeys.self)
+        try container.encode(name, forKey: .name)
+        try container.encode(name, forKey: .like)
+        try container.encode(name, forKey: .type)
+        try container.encode(name, forKey: .purpose)
+        try container.encode(name, forKey: .description)
+        try container.encode(name, forKey: .staticImage)
+        try container.encode(name, forKey: .dynamicImage)
+        try container.encode(name, forKey: .notes)
+        try container.encode(name, forKey: .imageURL)
+    }
     
     
     /// Function recieves a string and attempts to convert this to a URL. Function then checks to make sure URL is an image and downloads that image. Image and URL are then stored in imageCache
