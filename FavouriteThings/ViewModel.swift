@@ -15,7 +15,7 @@ class ViewModel: ObservableObject, Identifiable, Codable{
     /// Stores data objects of type Thing
     @Published var things: [Thing] = []
         /// Stores data objects of type DetailViewModel
-    @Published var detailViewModel: [DetailViewModel] = []
+    @Published var detailViewModel: DetailViewModel
     
     /// - Parameters:
     ///     - title: Stores Title of App
@@ -25,7 +25,7 @@ class ViewModel: ObservableObject, Identifiable, Codable{
     init(title: String = "Favourite Things"){
         self.title = title
         things = [Thing]()
-        detailViewModel = [DetailViewModel]()
+        detailViewModel = DetailViewModel()
     }
     
     enum CodingKeys: String, CodingKey {
@@ -38,7 +38,7 @@ class ViewModel: ObservableObject, Identifiable, Codable{
         let container = try decoder.container(keyedBy: CodingKeys.self)
         title = try container.decode(String.self, forKey: .title)
         things = try container.decode([Thing].self, forKey: .things)
-        detailViewModel = try container.decode([DetailViewModel].self, forKey: .detailViewModel)
+        detailViewModel = try container.decode(DetailViewModel.self, forKey: .detailViewModel)
     }
 
     func encode(to encoder: Encoder) throws {

@@ -24,7 +24,7 @@ struct MasterView: View {
             }
             List {
                 ForEach(viewModel.things) { thing in
-                    NavigationLink(destination: DetailView(thing: thing, dvm: self.viewModel.detailViewModel[0])) {
+                    NavigationLink(destination: DetailView(thing: thing, dvm: self.viewModel.detailViewModel)) {
                         // Row View Stores functionality and UI instructions for each individual row
                         RowView(thing: thing)
                     }
