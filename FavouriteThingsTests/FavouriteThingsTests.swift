@@ -29,7 +29,7 @@ class ReferencerTests: XCTestCase {
         // Put teardown code here. This method is called after the invocation of each test method in the class.
     }
     
-    // Test the functionality of Thing Class
+    /// Test the functionality of Thing Class
     func testThing() {
         XCTAssertEqual(thing.name, "Pencil")
         XCTAssertEqual(thing.like, "It make words")
@@ -43,7 +43,7 @@ class ReferencerTests: XCTestCase {
 
     }
 
-    // Test the functionality of instances within array of Things.
+    /// Test the functionality of instances within array of Things.
     func testThings(){
         XCTAssertEqual(viewModel.things.count, 1)
         XCTAssertEqual(viewModel.things[0].name, "Pencil")
@@ -57,7 +57,7 @@ class ReferencerTests: XCTestCase {
         XCTAssertEqual(viewModel.things[0].imageURL, "")
     }
     
-    // Test AddWave() Method of Class View Model. Adds 3 new Thing instances and verifies that they have been appended
+    /// Test AddThing() Method of Class View Model. Adds 3 new Thing instances and verifies that they have been appended
     func testAddThing(){
         self.viewModel.things.append(thing)
         self.viewModel.things.append(thing)
@@ -65,7 +65,7 @@ class ReferencerTests: XCTestCase {
         XCTAssertEqual(viewModel.things.count, 4)
     }
     
-    // Tests integrity of data appended to View Model Things Array by creating one new Thing Instance
+    /// Tests integrity of data appended to View Model Things Array by creating one new Thing Instance
     func testAppendedThing(){
         self.viewModel.addThing()
         XCTAssertEqual(viewModel.things.count, 2)
@@ -80,13 +80,13 @@ class ReferencerTests: XCTestCase {
         XCTAssertEqual(viewModel.things[1].imageURL, "")
     }
     
-    // Tests RemoveWave of Class View Model
+    /// Tests RemoveWave of Class View Model
     func testRemoveThing(){
         viewModel.things.remove(at: 0)
         XCTAssertEqual(viewModel.things.count, 0)
     }
     
-    // Tests imageFromUrl Method of Class Thing - Should update dynamicImage / imageURL / imageCache attributes
+    /// Tests imageFromUrl Method of Class Thing - Should update dynamicImage / imageURL / imageCache attributes
     func testImageFromUrl(){
         self.thing.imageURL = "https://upload.wikimedia.org/wikipedia/commons/5/54/Mallard_drake_.02.jpg"
         self.thing.imageFromUrl(self.thing.imageURL)
@@ -95,7 +95,7 @@ class ReferencerTests: XCTestCase {
         XCTAssertEqual(viewModel.things[0].imageCache.count, 1)
     }
     
-    // Tests the attributes within the DetailViewModel
+    /// Tests the attributes within the DetailViewModel
     func testDetailViewModel(){
         XCTAssertEqual(detailViewModel.notes, "Notes:")
         XCTAssertEqual(detailViewModel.type, "Type:")
@@ -110,6 +110,24 @@ class ReferencerTests: XCTestCase {
         XCTAssertEqual(detailViewModel.imagePlaceholder, "Insert Image URL")
     }
     
+    /// Test the integrity of DataViewModel within the ViewModel
+    func testViewModelDVM(){
+        XCTAssertEqual(viewModel.detailViewModel.notes, "Notes:")
+        XCTAssertEqual(viewModel.detailViewModel.type, "Type:")
+        XCTAssertEqual(viewModel.detailViewModel.purpose, "Purpose:")
+        XCTAssertEqual(viewModel.detailViewModel.description, "Description:")
+        XCTAssertEqual(viewModel.detailViewModel.notesPlaceholder, "Add Some Notes Here")
+        XCTAssertEqual(viewModel.detailViewModel.namePlaceholder, "What is this thing?")
+        XCTAssertEqual(viewModel.detailViewModel.likePlaceholder, "Why do you like this thing?")
+        XCTAssertEqual(viewModel.detailViewModel.typePlaceholder, "What is the type of this thing?")
+        XCTAssertEqual(viewModel.detailViewModel.purposePlaceholder, "What is the purpose of this thing?")
+        XCTAssertEqual(viewModel.detailViewModel.descriptionPlaceholder, "Write a description")
+        XCTAssertEqual(viewModel.detailViewModel.imagePlaceholder, "Insert Image URL")
+    }
     
+    /// Test the title field within ViewModel
+    func testTitle(){
+        XCTAssertEqual(viewModel.title, "Favourite Things")
+    }
     
 }
