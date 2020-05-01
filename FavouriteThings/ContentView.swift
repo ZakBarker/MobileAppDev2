@@ -16,6 +16,7 @@ struct ContentView: View {
 //    @ObservedObject var viewModel: ViewModel
     @Environment(\.managedObjectContext) var context
     @FetchRequest(sortDescriptors: [NSSortDescriptor(keyPath: \ViewModel.title, ascending: true)], animation: .default) var viewModel: FetchedResults<ViewModel>
+    
     var body: some View {
         NavigationView{
             MasterView(viewModel: viewModel.first ?? ViewModel(context: context))
