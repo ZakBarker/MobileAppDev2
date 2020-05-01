@@ -8,6 +8,7 @@
 
 import UIKit
 import SwiftUI
+import CoreData
 
 // Code identifies location of data storage file amongst application documents
 let fileManager = FileManager.default
@@ -37,26 +38,36 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     
     func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
         
-        // Code Reads data from JSON file and restores ViewModel upon initialisation of app
-        do {
-            let t = try Data(contentsOf: fileURL)
-            let decoder = JSONDecoder()
-            let decodedModel = try decoder.decode(ViewModel.self, from:t)
-            print(decodedModel.things.first?.name ?? "No Items Here")
-            viewModel = decodedModel
-            print("Made it to here")
-        } catch {
-            print("Could not load \(fileURL)")
+        guard let delegate = UIApplication.shared.delegate as? AppDelegate else {
+            fatalError("Nehoooooop")
         }
+        
+        let viewContext = delegate.persistentContainer.viewContext
+        
+        
+        let contentView = ContentView().environment(\.managedObjectContext, viewContext)
+        
+        
+//        // Code Reads data from JSON file and restores ViewModel upon initialisation of app
+//        do {
+//            let t = try Data(contentsOf: fileURL)
+//            let decoder = JSONDecoder()
+//            let decodedModel = try decoder.decode(ViewModel.self, from:t)
+//            print(decodedModel.things.first?.name ?? "No Items Here")
+//            viewModel = decodedModel
+//            print("Made it to here")
+//        } catch {
+//            print("Could not load \(fileURL)")
+//        }
 
-        // Section of code restores Images to all Things which are using a dynamic image
-        for thing in viewModel.things {
-            thing.imageFromUrl(thing.dynamicImage)
-        }
+//        // Section of code restores Images to all Things which are using a dynamic image
+//        for thing in viewModel.things {
+//            thing.imageFromUrl(thing.dynamicImage)
+//        }
         
         
         // Create the SwiftUI view that provides the window contents.
-        let contentView = ContentView(viewModel: viewModel)
+//        let contentView = ContentView(viewModel: viewModel)
 
         // Use a UIHostingController as window root view controller.
         if let windowScene = scene as? UIWindowScene {

@@ -22,6 +22,7 @@
 		76806AE0245148AD00E1645F /* Thing.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76806ADF245148AD00E1645F /* Thing.swift */; };
 		76806B1E2451508600E1645F /* DetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76806B1D2451508600E1645F /* DetailViewModel.swift */; };
 		76C259BF245BE1DD00EA1A10 /* FavouriteThings.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 76C259BD245BE1DD00EA1A10 /* FavouriteThings.xcdatamodeld */; };
+		76C259D4245BEB3200EA1A10 /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 76C259D3245BEB3200EA1A10 /* CoreData.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -69,6 +70,7 @@
 		76C259CF245BE88600EA1A10 /* DetailViewModel+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DetailViewModel+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		76C259D0245BE88600EA1A10 /* Thing+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Thing+CoreDataClass.swift"; sourceTree = "<group>"; };
 		76C259D1245BE88600EA1A10 /* Thing+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Thing+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		76C259D3245BEB3200EA1A10 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -76,6 +78,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				76C259D4245BEB3200EA1A10 /* CoreData.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -109,6 +112,7 @@
 				76806ABD2451466500E1645F /* FavouriteThingsTests */,
 				76806AC82451466500E1645F /* FavouriteThingsUITests */,
 				76806AA52451466400E1645F /* Products */,
+				76C259D2245BEB3200EA1A10 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -167,6 +171,14 @@
 				76806ACB2451466500E1645F /* Info.plist */,
 			);
 			path = FavouriteThingsUITests;
+			sourceTree = "<group>";
+		};
+		76C259D2245BEB3200EA1A10 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				76C259D3245BEB3200EA1A10 /* CoreData.framework */,
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
