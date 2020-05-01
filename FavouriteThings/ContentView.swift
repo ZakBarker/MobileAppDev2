@@ -15,15 +15,18 @@ struct ContentView: View {
     // View Model stores all information to be displayed in the View
 //    @ObservedObject var viewModel: ViewModel
     @Environment(\.managedObjectContext) var context
-    @FetchRequest(sortDescriptors: [NSSortDescriptor(keyPath: \ViewModels.title, ascending: true)], animation: .default) var viewModel: FetchRequest<ViewModel>
+    @FetchRequest(sortDescriptors: [NSSortDescriptor(keyPath: \ViewModel.title, ascending: true)], animation: .default) var viewModel: FetchedResults<ViewModel>
     var body: some View {
         NavigationView{
-            MasterView(viewModel: viewModel)
+            MasterView(viewModel: viewModel.first ?? ViewModel(context: context))
                 .navigationBarItems(
                     leading: EditButton(),
                     trailing: Button(
                         action: {
-                            withAnimation { self.viewModel.addThing() }
+                            withAnimation {
+                                let thing = Thing(context: self.context)
+                                thing.viewModel = self.viewModel.first
+                            }
                         }
                     ) {
                         Image(systemName: "plus")
