@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="16114.2" systemVersion="19D76" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
+    <entity name="Thing" representedClassName="Thing" syncable="YES" codeGenerationType="class">
+        <attribute name="descript" optional="YES" attributeType="String"/>
+        <attribute name="dynamicImage" optional="YES" attributeType="String"/>
+        <attribute name="imageURL" optional="YES" attributeType="String"/>
+        <attribute name="like" optional="YES" attributeType="String"/>
+        <attribute name="name" optional="YES" attributeType="String"/>
+        <attribute name="notes" optional="YES" attributeType="String"/>
+        <attribute name="purpose" optional="YES" attributeType="String"/>
+        <attribute name="staticImage" optional="YES" attributeType="String"/>
+        <attribute name="type" optional="YES" attributeType="String"/>
+        <relationship name="viewModel" optional="YES" toMany="YES" deletionRule="Nullify" ordered="YES" destinationEntity="ViewModel" inverseName="has" inverseEntity="ViewModel"/>
+    </entity>
+    <entity name="ViewModel" representedClassName="ViewModel" syncable="YES" codeGenerationType="class">
+        <attribute name="title" optional="YES" attributeType="String"/>
+        <relationship name="has" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Thing" inverseName="viewModel" inverseEntity="Thing"/>
+    </entity>
+    <elements>
+        <element name="Thing" positionX="-63" positionY="-18" width="128" height="28"/>
+        <element name="ViewModel" positionX="-54" positionY="9" width="128" height="28"/>
+    </elements>
+</model>
