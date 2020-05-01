@@ -63,6 +63,12 @@
 		76806ADF245148AD00E1645F /* Thing.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Thing.swift; sourceTree = "<group>"; };
 		76806B1D2451508600E1645F /* DetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewModel.swift; sourceTree = "<group>"; };
 		76C259BE245BE1DD00EA1A10 /* FavouriteThings.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = FavouriteThings.xcdatamodel; sourceTree = "<group>"; };
+		76C259CC245BE88600EA1A10 /* ViewModel+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ViewModel+CoreDataClass.swift"; sourceTree = "<group>"; };
+		76C259CD245BE88600EA1A10 /* ViewModel+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ViewModel+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		76C259CE245BE88600EA1A10 /* DetailViewModel+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DetailViewModel+CoreDataClass.swift"; sourceTree = "<group>"; };
+		76C259CF245BE88600EA1A10 /* DetailViewModel+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DetailViewModel+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		76C259D0245BE88600EA1A10 /* Thing+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Thing+CoreDataClass.swift"; sourceTree = "<group>"; };
+		76C259D1245BE88600EA1A10 /* Thing+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Thing+CoreDataProperties.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -93,6 +99,12 @@
 		76806A9B2451466400E1645F = {
 			isa = PBXGroup;
 			children = (
+				76C259CC245BE88600EA1A10 /* ViewModel+CoreDataClass.swift */,
+				76C259CD245BE88600EA1A10 /* ViewModel+CoreDataProperties.swift */,
+				76C259CE245BE88600EA1A10 /* DetailViewModel+CoreDataClass.swift */,
+				76C259CF245BE88600EA1A10 /* DetailViewModel+CoreDataProperties.swift */,
+				76C259D0245BE88600EA1A10 /* Thing+CoreDataClass.swift */,
+				76C259D1245BE88600EA1A10 /* Thing+CoreDataProperties.swift */,
 				76806AA62451466400E1645F /* FavouriteThings */,
 				76806ABD2451466500E1645F /* FavouriteThingsTests */,
 				76806AC82451466500E1645F /* FavouriteThingsUITests */,
