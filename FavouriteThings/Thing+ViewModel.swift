@@ -7,6 +7,8 @@
 //
 import CoreData
 import Foundation
+import UIKit
+import SwiftUI
 
 extension Thing {
     var nameStr: String {
@@ -61,5 +63,62 @@ extension Thing {
            get { purposeField ?? "" }
            set { purposeField = newValue }
        }
+    
+    func newThing(thing: Thing){
+        thing.name = "Quack"
+        thing.like = "Quack Quack"
+        thing.type = "Quack Quack Quack Quack"
+        thing.purpose = "Quack Quack Quack"
+        thing.descript = "Quack Quack"
+        thing.staticImage = "duck"
+        thing.dynamicImage = ""
+        thing.notes = ""
+        thing.imageURL = ""
+        thing.descriptField = "Description"
+        thing.typeField = "Type"
+        thing.notesField = "Notes:"
+        thing.purposeField = "Purpose:"
+    }
 
+    func imageFromUrl(_ imageUrl: String){
+        // Convert String to URL
+        guard let url = URL(string: imageUrl)
+            else{
+                return
+        }
+        // Use url to retrieve image data
+        guard let imageData = try? Data(contentsOf: url)
+            else {
+                return
+        }
+        // Convert image data into image
+        guard let uiImage = UIImage(data: imageData) else {
+            return
+        }
+        // If successful, Store image in imageCache and set dynamicImage to fit the url string
+        self.dynamicImage = imageURL
+    }
+    
+    func displayImageDetail() -> Image{
+        if !self.dynamicImageStr.isEmpty {
+            guard let url = URL(string: self.dynamicImageStr)
+                else{
+                    return Image(self.staticImageStr)
+            }
+            // Use url to retrieve image data
+            guard let imageData = try? Data(contentsOf: url)
+                else {
+                    return Image(self.staticImageStr)
+            }
+            // Convert image data into image
+            guard let uiImage = UIImage(data: imageData) else {
+                return Image(self.staticImageStr)
+            }
+            return Image(uiImage: uiImage)
+        }
+        else{
+            return Image(self.staticImageStr)
+        }
+    }
+    
 }
