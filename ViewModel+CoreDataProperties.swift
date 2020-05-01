@@ -19,7 +19,6 @@ extension ViewModel {
 
     @NSManaged public var title: String?
     @NSManaged public var thing: NSOrderedSet?
-    @NSManaged public var detailViewModel: NSOrderedSet?
 
 }
 
@@ -55,40 +54,5 @@ extension ViewModel {
 
     @objc(removeThing:)
     @NSManaged public func removeFromThing(_ values: NSOrderedSet)
-
-}
-
-// MARK: Generated accessors for detailViewModel
-extension ViewModel {
-
-    @objc(insertObject:inDetailViewModelAtIndex:)
-    @NSManaged public func insertIntoDetailViewModel(_ value: DetailViewModel, at idx: Int)
-
-    @objc(removeObjectFromDetailViewModelAtIndex:)
-    @NSManaged public func removeFromDetailViewModel(at idx: Int)
-
-    @objc(insertDetailViewModel:atIndexes:)
-    @NSManaged public func insertIntoDetailViewModel(_ values: [DetailViewModel], at indexes: NSIndexSet)
-
-    @objc(removeDetailViewModelAtIndexes:)
-    @NSManaged public func removeFromDetailViewModel(at indexes: NSIndexSet)
-
-    @objc(replaceObjectInDetailViewModelAtIndex:withObject:)
-    @NSManaged public func replaceDetailViewModel(at idx: Int, with value: DetailViewModel)
-
-    @objc(replaceDetailViewModelAtIndexes:withDetailViewModel:)
-    @NSManaged public func replaceDetailViewModel(at indexes: NSIndexSet, with values: [DetailViewModel])
-
-    @objc(addDetailViewModelObject:)
-    @NSManaged public func addToDetailViewModel(_ value: DetailViewModel)
-
-    @objc(removeDetailViewModelObject:)
-    @NSManaged public func removeFromDetailViewModel(_ value: DetailViewModel)
-
-    @objc(addDetailViewModel:)
-    @NSManaged public func addToDetailViewModel(_ values: NSOrderedSet)
-
-    @objc(removeDetailViewModel:)
-    @NSManaged public func removeFromDetailViewModel(_ values: NSOrderedSet)
 
 }

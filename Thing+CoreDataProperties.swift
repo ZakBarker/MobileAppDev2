@@ -26,6 +26,10 @@ extension Thing {
     @NSManaged public var dynamicImage: String?
     @NSManaged public var notes: String?
     @NSManaged public var imageURL: String?
+    @NSManaged public var descriptField: String?
+    @NSManaged public var typeField: String?
+    @NSManaged public var notesField: String?
+    @NSManaged public var purposeField: String?
     @NSManaged public var viewModel: ViewModel?
 
 }
