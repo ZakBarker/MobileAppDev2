@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="16114.2" systemVersion="19D76" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
+    <entity name="DetailViewModel" representedClassName="DetailViewModel" syncable="YES" codeGenerationType="class">
+        <attribute name="descript" optional="YES" attributeType="String"/>
+        <attribute name="descriptPlaceholder" optional="YES" attributeType="String"/>
+        <attribute name="imagePlaceholder" optional="YES" attributeType="String"/>
+        <attribute name="likePlaceholder" optional="YES" attributeType="String"/>
+        <attribute name="namePlaceholder" optional="YES" attributeType="String"/>
+        <attribute name="notes" optional="YES" attributeType="String"/>
+        <attribute name="notesPlaceholder" optional="YES" attributeType="String"/>
+        <attribute name="purpose" optional="YES" attributeType="String"/>
+        <attribute name="purposePlaceholder" optional="YES" attributeType="String"/>
+        <attribute name="type" optional="YES" attributeType="String"/>
+        <attribute name="typePlaceholder" optional="YES" attributeType="String"/>
+        <relationship name="viewModel" optional="YES" maxCount="1" deletionRule="Nullify" ordered="YES" destinationEntity="ViewModel"/>
+    </entity>
+    <entity name="Thing" representedClassName="Thing" syncable="YES" codeGenerationType="class">
+        <attribute name="descript" optional="YES" attributeType="String"/>
+        <attribute name="dynamicImage" optional="YES" attributeType="String"/>
+        <attribute name="imageURL" optional="YES" attributeType="String"/>
+        <attribute name="like" optional="YES" attributeType="String"/>
+        <attribute name="name" optional="YES" attributeType="String"/>
+        <attribute name="notes" optional="YES" attributeType="String"/>
+        <attribute name="purpose" optional="YES" attributeType="String"/>
+        <attribute name="staticImage" optional="YES" attributeType="String"/>
+        <attribute name="type" optional="YES" attributeType="String"/>
+        <relationship name="viewModel" optional="YES" maxCount="1" deletionRule="Nullify" ordered="YES" destinationEntity="ViewModel"/>
+    </entity>
+    <entity name="ViewModel" representedClassName="ViewModel" syncable="YES" codeGenerationType="class">
+        <attribute name="title" optional="YES" attributeType="String"/>
+        <relationship name="detailViewModel" optional="YES" toMany="YES" deletionRule="Nullify" ordered="YES" destinationEntity="DetailViewModel"/>
+        <relationship name="thing" optional="YES" toMany="YES" deletionRule="Nullify" ordered="YES" destinationEntity="Thing"/>
+    </entity>
+    <elements>
+        <element name="Thing" positionX="-287.7265625" positionY="14.17578125" width="128" height="193"/>
+        <element name="ViewModel" positionX="-73.9375" positionY="119.01171875" width="128" height="88"/>
+        <element name="DetailViewModel" positionX="139.40625" positionY="157.3984375" width="128" height="223"/>
+    </elements>
+</model>
