@@ -19,40 +19,41 @@ struct DetailView: View {
                 ZStack{
                     Color(hue: 80, saturation: 80, brightness: 80).edgesIgnoringSafeArea(.all)
                     VStack(alignment: .leading) {
-//                        TextField("Notes", text: $thing.notesField ?? "Nen").font(.largeTitle)
-//                            .foregroundColor(Color(red: 1, green: 1, blue: 1, opacity: 0.9)).offset(y: -60)
-//                        TextField("Add Notes Here", text: $thing.notes).offset(y: -70).textFieldStyle(RoundedBorderTextFieldStyle())
-//                        TextField("Insert image Url", text: $thing.imageURL, onCommit: {self.thing.imageFromUrl(self.thing.imageURL)}).offset(y: -70).textFieldStyle(RoundedBorderTextFieldStyle())
+                        TextField("Notes", text: $thing.notesFieldStr).font(.largeTitle)
+                            .foregroundColor(Color(red: 1, green: 1, blue: 1, opacity: 0.9)).offset(y: -60)
+                        TextField("Add Notes Here", text: $thing.notesStr).offset(y: -70).textFieldStyle(RoundedBorderTextFieldStyle())
+//                        TextField("Insert image Url", text: $thing.imageURLStr, onCommit: {self.thing.imageFromUrl(self.thing.imageURL)}).offset(y: -70).textFieldStyle(RoundedBorderTextFieldStyle())
 //                        // Image is displayed by calling thing method which returns an Image type.
 //                        thing.displayImageDetail().resizable().aspectRatio(contentMode: .fit).frame(width: 370.0).border(Color(hue: 0.584, saturation: 0.889, brightness: 0.504), width: /*@START_MENU_TOKEN@*/1/*@END_MENU_TOKEN@*/).offset(y: -70)
+                        Image(thing.staticImageStr).resizable().aspectRatio(contentMode: .fit).frame(width: 370.0).border(Color(hue: 0.584, saturation: 0.889, brightness: 0.504), width: /*@START_MENU_TOKEN@*/1/*@END_MENU_TOKEN@*/).offset(y: -70)
                         TextField("Insert Name", text: $thing.nameStr)
                             .font(.system(size: 30, weight: .heavy, design: .default))
                             .foregroundColor(Color(red: 1, green: 1, blue: 1, opacity: 0.9)).offset(y: -70)
-//                        TextField("What do you like about it" + "\n", text: $thing.like)
-//                            .font(.system(size: 24, weight: .medium, design: .default))
-//                            .foregroundColor(Color(red: 1, green: 1, blue: 1, opacity: 0.9)).offset(y: -75)
-//                        HStack {
-//                            TextField("Type", text: thing.typeField)
-//                                .multilineTextAlignment(.trailing).foregroundColor(Color(red: 1, green: 1, blue: 1, opacity: 0.9)).offset(x: -60, y: -70)
-//                                .font(.system(size: 18, weight: .heavy, design: .default))
-//                            TextField("What sort of thing is this", text: $thing.type)
-//                                .multilineTextAlignment(.leading).foregroundColor(Color(red: 1, green: 1, blue: 1, opacity: 0.9)).offset(x: -60, y: -70)
-//                        }
-//                        HStack {
-//                            TextField("Purpose", text: thing.purposeField)
-//                                .multilineTextAlignment(.trailing).foregroundColor(Color(red: 1, green: 1, blue: 1, opacity: 0.9)).offset(x: -60, y: -70)
-//                                .font(.system(size: 18, weight: .heavy, design: .default))
-//                            TextField("What is its purpose", text: $thing.purpose)
-//                                .multilineTextAlignment(.leading).foregroundColor(Color(red: 1, green: 1, blue: 1, opacity: 0.9)).offset(x: -60, y: -70)
-//
-//                        }
-//                        HStack {
-//                            TextField("Description", text: $thing.descript)
-//                                .multilineTextAlignment(.trailing).foregroundColor(Color(red: 1, green: 1, blue: 1, opacity: 0.9)).offset(x: -60, y: -70)
-//                                .font(.system(size: 18, weight: .heavy, design: .default))
-//                            TextField("Describe it", text: $thing.descriptField)
-//                                .multilineTextAlignment(.leading).foregroundColor(Color(red: 1, green: 1, blue: 1, opacity: 0.9)).offset(x: -60, y: -70)
-//                        }
+                        TextField("What do you like about it" + "\n", text: $thing.likeStr)
+                            .font(.system(size: 24, weight: .medium, design: .default))
+                            .foregroundColor(Color(red: 1, green: 1, blue: 1, opacity: 0.9)).offset(y: -75)
+                        HStack {
+                            TextField("Type", text: $thing.typeFieldStr)
+                                .multilineTextAlignment(.trailing).foregroundColor(Color(red: 1, green: 1, blue: 1, opacity: 0.9)).offset(x: -60, y: -70)
+                                .font(.system(size: 18, weight: .heavy, design: .default))
+                            TextField("What sort of thing is this", text: $thing.typeStr)
+                                .multilineTextAlignment(.leading).foregroundColor(Color(red: 1, green: 1, blue: 1, opacity: 0.9)).offset(x: -60, y: -70)
+                        }
+                        HStack {
+                            TextField("Purpose", text: $thing.purposeFieldStr)
+                                .multilineTextAlignment(.trailing).foregroundColor(Color(red: 1, green: 1, blue: 1, opacity: 0.9)).offset(x: -60, y: -70)
+                                .font(.system(size: 18, weight: .heavy, design: .default))
+                            TextField("What is its purpose", text: $thing.purposeStr)
+                                .multilineTextAlignment(.leading).foregroundColor(Color(red: 1, green: 1, blue: 1, opacity: 0.9)).offset(x: -60, y: -70)
+
+                        }
+                        HStack {
+                            TextField("Description", text: $thing.descriptStr)
+                                .multilineTextAlignment(.trailing).foregroundColor(Color(red: 1, green: 1, blue: 1, opacity: 0.9)).offset(x: -60, y: -70)
+                                .font(.system(size: 18, weight: .heavy, design: .default))
+                            TextField("Describe it", text: $thing.descriptFieldStr)
+                                .multilineTextAlignment(.leading).foregroundColor(Color(red: 1, green: 1, blue: 1, opacity: 0.9)).offset(x: -60, y: -70)
+                        }
                     }
                     .padding(.all, 50.0)
                 }

@@ -13,18 +13,53 @@ extension Thing {
         get { name ?? "" }
         set { name = newValue }
     }
-//    var like: String?
-//    var type: String?
-//    var purpose: String?
-//    var descript: String?
-//    var staticImage: String?
-//    var dynamicImage: String?
-//    var notes: String?
-//    var imageURL: String?
-//    var descriptField: String?
-//    var typeField: String?
-//    var notesField: String?
-//    var purposeField: String?
-//    var viewModel: ViewModel?
+    var likeStr: String {
+       get { like ?? "" }
+       set { like = newValue }
+   }
+    var typeStr: String {
+           get { type ?? "" }
+           set { type = newValue }
+       }
+    var purposeStr: String {
+           get { purpose ?? "" }
+           set { purpose = newValue }
+       }
+    var descriptStr: String {
+           get { descript ?? "" }
+           set { descript = newValue }
+       }
+    var staticImageStr: String {
+           get { staticImage ?? "" }
+           set { staticImage = newValue }
+       }
+    var dynamicImageStr: String {
+           get { dynamicImage ?? "" }
+           set { dynamicImage = newValue }
+       }
+    var notesStr: String {
+           get { notes ?? "" }
+           set { notes = newValue }
+       }
+    var imageURLStr: String {
+           get { imageURL ?? "" }
+           set { imageURL = newValue }
+       }
+    var descriptFieldStr: String {
+           get { descriptField ?? "" }
+           set { descriptField = newValue }
+       }
+    var typeFieldStr: String {
+           get { typeField ?? "" }
+           set { typeField = newValue }
+       }
+    var notesFieldStr: String {
+           get { notesField ?? "" }
+           set { notesField = newValue }
+       }
+    var purposeFieldStr: String {
+           get { purposeField ?? "" }
+           set { purposeField = newValue }
+       }
 
 }

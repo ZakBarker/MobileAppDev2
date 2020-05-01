@@ -26,6 +26,9 @@ struct ContentView: View {
                         action: {
                             withAnimation {
                                 let thing = Thing(context: self.context)
+                                thing.name = "Quack"
+                                thing.like = "Quack Quack"
+                                thing.staticImage = "duck"
                                 thing.viewModel = self.viewModel.first
                             }
                         }

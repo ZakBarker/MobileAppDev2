@@ -18,22 +18,12 @@ struct RowView: View {
         HStack{
             // Called function which dynamically changes the display image based on input from Detail View.
 //            thing.displayImageRow().resizable().frame(width: 70, height: 50)
+            Image(thing.staticImageStr).resizable().frame(width: 70, height: 50)
             VStack(alignment: .leading){
                 Text(thing.nameStr).bold()
-                Text("Bye")
+                Text(thing.likeStr)
                     .font(.footnote)
             }
         }
     }
 }
-
-
-//HStack{
-//    // Called function which dynamically changes the display image based on input from Detail View.
-//    thing.displayImageRow().resizable().frame(width: 70, height: 50)
-//    VStack(alignment: .leading){
-//        Text(thing.name).bold()
-//        Text(thing.like)
-//            .font(.footnote)
-//    }
-//}
