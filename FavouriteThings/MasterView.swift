@@ -19,6 +19,7 @@ extension ViewModel {
 
 struct MasterView: View {
     // View Model stores all information to be displayed in the View
+    @Environment(\.managedObjectContext) var context
     @ObservedObject var viewModel: ViewModel
     @Environment(\.editMode) var mode
     var body: some View {

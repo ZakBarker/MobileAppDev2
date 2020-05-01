@@ -34,7 +34,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
     
     /// Mark: - Core Data Stack
-    var persistentContainer: NSPersistentContainer {
+    lazy var persistentContainer: NSPersistentContainer = {
         let container = NSPersistentContainer(name: "FavouriteThings")
         container.loadPersistentStores { (storeDescription, error) in
             if let error = error as NSError? {
@@ -42,7 +42,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             }
         }
         return container
-    }
+    }()
     
     func saveContext() {
         let context = persistentContainer.viewContext

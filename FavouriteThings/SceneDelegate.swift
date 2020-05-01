@@ -10,31 +10,9 @@ import UIKit
 import SwiftUI
 import CoreData
 
-// Code identifies location of data storage file amongst application documents
-let fileManager = FileManager.default
-let urls = fileManager.urls(for: .documentDirectory, in: .userDomainMask)
-let documentFolderURL = urls.first!
-let fileURL = documentFolderURL.appendingPathComponent("favouriteThings.json")
-
-/// Function encodes View Model and writes it to a JSON file.
-/// - Parameters:
-///     - model: Typically going to be ViewModel or any data model which needs to be written to JSON
-func writeData(_ model: ViewModel){
-    do {
-        let json = JSONEncoder()
-        let data = try json.encode(model)
-        try data.write(to: fileURL)
-        print("This Happened")
-    } catch {
-        print("Could not write file - \(error)")
-    }
-}
-
-
 class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
     var window: UIWindow?
-    var viewModel = ViewModel()
     
     func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
         
@@ -79,8 +57,6 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     }
 
     func sceneDidDisconnect(_ scene: UIScene) {
-        writeData(viewModel)
-
         // Called as the scene is being released by the system.
         // This occurs shortly after the scene enters the background, or when its session is discarded.
         // Release any resources associated with this scene that can be re-created the next time the scene connects.
@@ -106,7 +82,6 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         // Called as the scene transitions from the foreground to the background.
         // Use this method to save data, release shared resources, and store enough scene-specific state information
         // to restore the scene back to its current state.
-        writeData(viewModel)
     }
 
 
