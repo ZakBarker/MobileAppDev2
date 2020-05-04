@@ -42,4 +42,3 @@ struct MasterView: View {
         }
     }
 }
-//       self.viewModel.things.move(fromOffsets: indices, toOffset: destination)

@@ -78,6 +78,7 @@ extension Thing {
         thing.typeField = "Type"
         thing.notesField = "Notes:"
         thing.purposeField = "Purpose:"
+        print("-------------------")
     }
 
     func imageFromUrl(_ imageUrl: String){
