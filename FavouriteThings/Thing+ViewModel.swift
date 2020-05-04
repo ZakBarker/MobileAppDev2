@@ -1,5 +1,5 @@
 //
-//  Thing+ViewModel.swift
+//  Thing+ViewModels.swift
 //  FavouriteThings
 //
 //  Created by Zak Barker on 1/5/20.

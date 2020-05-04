@@ -14,7 +14,7 @@ import CoreData
 struct MasterView: View {
     // View Model stores all information to be displayed in the View
     @Environment(\.managedObjectContext) var context
-    @ObservedObject var viewModel: ViewModel
+    @ObservedObject var viewModels: ViewModels
     @Environment(\.editMode) var mode
     @ObservedObject var imageCache: ImageCache
     var body: some View {
@@ -22,23 +22,23 @@ struct MasterView: View {
             if mode?.wrappedValue == .active{
                 HStack {
                     Text("📝  ").font(Font.system(.largeTitle).bold())
-                    TextField("Enter Title", text: $viewModel.titleStr).font(Font.system(.largeTitle).bold())
+                    TextField("Enter Title", text: $viewModels.titleStr).font(Font.system(.largeTitle).bold())
                 }
             }
             List {
-                ForEach(viewModel.properThing, id: \.self) { thing in
+                ForEach(viewModels.properThing, id: \.self) { thing in
                     NavigationLink(destination: DetailView(thing: thing, imageCache: self.imageCache)) {
                         // Row View Stores functionality and UI instructions for each individual row
                         RowView(thing: thing, imageCache: self.imageCache)
                     }
                         // On deletion of Instance, call function which removes Instance of thing from Thing array in View Model
                     }.onDelete { indices in
-                        self.viewModel.removeFromThing(at: indices as NSIndexSet)
+                        self.viewModels.removeFromThing(at: indices as NSIndexSet)
                     }.onMove { (indices, destination) in
-                        self.viewModel.properThing.move(fromOffsets: (indices as NSIndexSet) as IndexSet, toOffset: (destination))
+                        self.viewModels.properThing.move(fromOffsets: (indices as NSIndexSet) as IndexSet, toOffset: (destination))
                 }
             }
-        .navigationBarTitle(mode?.wrappedValue == .active ? "" : viewModel.titleStr)
+        .navigationBarTitle(mode?.wrappedValue == .active ? "" : viewModels.titleStr)
         }
     }
 }

@@ -1,8 +1,8 @@
 //
-//  ViewModel+CoreDataProperties.swift
+//  ViewModels+CoreDataProperties.swift
 //  FavouriteThings
 //
-//  Created by Zak Barker on 1/5/20.
+//  Created by Zak Barker on 4/5/20.
 //  Copyright © 2020 Zak Barker. All rights reserved.
 //
 //
@@ -11,10 +11,10 @@ import Foundation
 import CoreData
 
 
-extension ViewModel {
+extension ViewModels {
 
-    @nonobjc public class func fetchRequest() -> NSFetchRequest<ViewModel> {
-        return NSFetchRequest<ViewModel>(entityName: "ViewModel")
+    @nonobjc public class func fetchRequest() -> NSFetchRequest<ViewModels> {
+        return NSFetchRequest<ViewModels>(entityName: "ViewModels")
     }
 
     @NSManaged public var title: String?
@@ -23,7 +23,7 @@ extension ViewModel {
 }
 
 // MARK: Generated accessors for thing
-extension ViewModel {
+extension ViewModels {
 
     @objc(insertObject:inThingAtIndex:)
     @NSManaged public func insertIntoThing(_ value: Thing, at idx: Int)
@@ -54,4 +54,5 @@ extension ViewModel {
 
     @objc(removeThing:)
     @NSManaged public func removeFromThing(_ values: NSOrderedSet)
+
 }

@@ -15,11 +15,11 @@ struct ContentView: View {
     // View Model stores all information to be displayed in the View
 //    @ObservedObject var viewModel: ViewModel
     @Environment(\.managedObjectContext) var context
-    @FetchRequest(sortDescriptors: [NSSortDescriptor(keyPath: \ViewModel.title, ascending: true)], animation: .default) var viewModel: FetchedResults<ViewModel>
+    @FetchRequest(sortDescriptors: [NSSortDescriptor(keyPath: \ViewModels.title, ascending: true)], animation: .default) var viewModels: FetchedResults<ViewModels>
     @ObservedObject var imageCache: ImageCache
     var body: some View {
         NavigationView{
-            MasterView(viewModel: viewModel.first ?? ViewModel(context: context), imageCache: imageCache)
+            MasterView(viewModels: viewModels.first ?? ViewModels(context: context), imageCache: imageCache)
                 .navigationBarItems(
                     leading: EditButton(),
                     trailing: Button(
@@ -27,7 +27,7 @@ struct ContentView: View {
                             withAnimation {
                                 let thing = Thing(context: self.context)
                                 thing.newThing(thing: thing)
-                                thing.viewModel = self.viewModel.first
+                                thing.viewModels = self.viewModels.first
                             }
                         }
                     ) {

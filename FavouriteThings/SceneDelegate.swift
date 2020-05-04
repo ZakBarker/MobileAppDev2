@@ -23,7 +23,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         let imageCache = ImageCache()
         let viewContext = delegate.persistentContainer.viewContext
         
-        let viewModel = ViewModel(context: viewContext)
+//        let viewModel = ViewModel(context: viewContext)
 //        for i in viewModel.properThing {
 //            imageCache.imageFromUrl(i.dynamicImageStr)
 //        }
@@ -32,15 +32,15 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 //        newEntry.newThing(thing: newEntry)
 //        newEntry.viewModel = viewModel
         
-        let newEntry1 = Thing(context: viewContext)
-        newEntry1.newThing(thing: newEntry1)
-        newEntry1.staticImage = "daft"
-        newEntry1.viewModel = viewModel
-
-        let newEntry2 = Thing(context: viewContext)
-        newEntry2.newThing(thing: newEntry2)
-        newEntry2.staticImage = "forest"
-        newEntry2.viewModel = viewModel
+//        let newEntry1 = Thing(context: viewContext)
+//        newEntry1.newThing(thing: newEntry1)
+//        newEntry1.staticImage = "daft"
+//        newEntry1.viewModel = viewModel
+//
+//        let newEntry2 = Thing(context: viewContext)
+//        newEntry2.newThing(thing: newEntry2)
+//        newEntry2.staticImage = "forest"
+//        newEntry2.viewModel = viewModel
 
         
         let contentView = ContentView(imageCache: imageCache).environment(\.managedObjectContext, viewContext)

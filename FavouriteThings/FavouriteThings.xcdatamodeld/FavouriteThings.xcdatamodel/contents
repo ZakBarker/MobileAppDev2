@@ -14,14 +14,14 @@
         <attribute name="staticImage" optional="YES" attributeType="String"/>
         <attribute name="type" optional="YES" attributeType="String"/>
         <attribute name="typeField" optional="YES" attributeType="String"/>
-        <relationship name="viewModel" optional="YES" maxCount="1" deletionRule="Nullify" ordered="YES" destinationEntity="ViewModel" inverseName="thing" inverseEntity="ViewModel"/>
+        <relationship name="viewModels" optional="YES" maxCount="1" deletionRule="Nullify" ordered="YES" destinationEntity="ViewModels" inverseName="thing" inverseEntity="ViewModels"/>
     </entity>
-    <entity name="ViewModel" representedClassName="ViewModel" syncable="YES" codeGenerationType="class">
+    <entity name="ViewModels" representedClassName="ViewModels" syncable="YES" codeGenerationType="class">
         <attribute name="title" optional="YES" attributeType="String"/>
-        <relationship name="thing" optional="YES" toMany="YES" deletionRule="Nullify" ordered="YES" destinationEntity="Thing" inverseName="viewModel" inverseEntity="Thing"/>
+        <relationship name="thing" optional="YES" toMany="YES" deletionRule="Nullify" ordered="YES" destinationEntity="Thing" inverseName="viewModels" inverseEntity="Thing"/>
     </entity>
     <elements>
         <element name="Thing" positionX="-287.7265625" positionY="14.17578125" width="128" height="253"/>
-        <element name="ViewModel" positionX="-73.9375" positionY="119.01171875" width="128" height="73"/>
+        <element name="ViewModels" positionX="-73.9375" positionY="119.01171875" width="128" height="73"/>
     </elements>
 </model>

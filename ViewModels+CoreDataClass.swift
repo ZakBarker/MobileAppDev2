@@ -1,5 +1,5 @@
 //
-//  Thing+CoreDataClass.swift
+//  ViewModels+CoreDataClass.swift
 //  FavouriteThings
 //
 //  Created by Zak Barker on 4/5/20.
@@ -10,7 +10,7 @@
 import Foundation
 import CoreData
 
-@objc(Thing)
-public class Thing: NSManagedObject {
+@objc(ViewModels)
+public class ViewModels: NSManagedObject {
 
 }

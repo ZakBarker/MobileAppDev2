@@ -1,5 +1,5 @@
 //
-//  ViewModel+ViewModel.swift
+//  ViewModels+ViewModels.swift
 //  FavouriteThings
 //
 //  Created by Zak Barker on 1/5/20.
@@ -9,7 +9,7 @@
 import CoreData
 import Foundation
 
-extension ViewModel {
+extension ViewModels {
     var titleStr: String {
         get { title ?? "" }
         set { title = newValue }
