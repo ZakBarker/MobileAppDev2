@@ -33,12 +33,12 @@ struct MasterView: View {
                         // On deletion of Instance, call function which removes Instance of thing from Thing array in View Model
                     }.onDelete { indices in
                         self.viewModel.removeFromThing(at: indices as NSIndexSet)
-//                    }.onMove { (indices, destination) in
-//                    
+                    }.onMove { (indices, destination) in
+                        self.viewModel.properThing.move(fromOffsets: (indices as NSIndexSet) as IndexSet, toOffset: (destination))
                 }
             }
         .navigationBarTitle(mode?.wrappedValue == .active ? "" : viewModel.titleStr)
+        }
     }
 }
-
-       self.viewModel.things.move(fromOffsets: indices, toOffset: destination)
+//       self.viewModel.things.move(fromOffsets: indices, toOffset: destination)

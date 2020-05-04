@@ -20,33 +20,17 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
             fatalError("Nehoooooop")
         }
         
+        var img = "hi"
         let viewContext = delegate.persistentContainer.viewContext
         
         
-        let contentView = ContentView().environment(\.managedObjectContext, viewContext)
-        
-        
-//        // Code Reads data from JSON file and restores ViewModel upon initialisation of app
-//        do {
-//            let t = try Data(contentsOf: fileURL)
-//            let decoder = JSONDecoder()
-//            let decodedModel = try decoder.decode(ViewModel.self, from:t)
-//            print(decodedModel.things.first?.name ?? "No Items Here")
-//            viewModel = decodedModel
-//            print("Made it to here")
-//        } catch {
-//            print("Could not load \(fileURL)")
-//        }
+        let contentView = ContentView(img: img).environment(\.managedObjectContext, viewContext)
 
 //        // Section of code restores Images to all Things which are using a dynamic image
 //        for thing in viewModel.things {
 //            thing.imageFromUrl(thing.dynamicImage)
 //        }
         
-        
-        // Create the SwiftUI view that provides the window contents.
-//        let contentView = ContentView(viewModel: viewModel)
-
         // Use a UIHostingController as window root view controller.
         if let windowScene = scene as? UIWindowScene {
             let window = UIWindow(windowScene: windowScene)

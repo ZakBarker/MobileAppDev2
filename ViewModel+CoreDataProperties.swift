@@ -54,5 +54,4 @@ extension ViewModel {
 
     @objc(removeThing:)
     @NSManaged public func removeFromThing(_ values: NSOrderedSet)
-
 }

@@ -16,6 +16,7 @@ extension ViewModel {
     }
     var properThing: [Thing] {
         get { thing?.array as? [Thing] ?? [] }
+        set { thing = NSOrderedSet(array: newValue)}
     }
     
     func newThing(thing: Thing){
@@ -34,5 +35,8 @@ extension ViewModel {
         thing.purposeField = "Purpose:"
 }
 
+//    func moveThing(_ indices: IndexSet, destination){
+//        self.properThing.move()
+//    }
     
 }
