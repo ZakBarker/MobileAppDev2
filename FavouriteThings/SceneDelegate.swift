@@ -11,7 +11,7 @@ import SwiftUI
 import CoreData
 
 class SceneDelegate: UIResponder, UIWindowSceneDelegate {
-
+   
     var window: UIWindow?
     
     func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
@@ -23,24 +23,30 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         let imageCache = ImageCache()
         let viewContext = delegate.persistentContainer.viewContext
         
-//        let viewModel = ViewModel(context: viewContext)
+       
+        //print(self.viewModels.first?.properThing)
+        //        if self.viewModels.first?.properThing.description != "" {
+//            print("viewModel Works")
+//
+//        }
 //        for i in viewModel.properThing {
 //            imageCache.imageFromUrl(i.dynamicImageStr)
 //        }
+//        var viewModels = ViewModels(context: viewContext)
 
 //        let newEntry = Thing(context: viewContext)
 //        newEntry.newThing(thing: newEntry)
-//        newEntry.viewModel = viewModel
-        
+//        newEntry.viewModels = viewModels
+//
 //        let newEntry1 = Thing(context: viewContext)
 //        newEntry1.newThing(thing: newEntry1)
 //        newEntry1.staticImage = "daft"
-//        newEntry1.viewModel = viewModel
+//        newEntry1.viewModels = viewModels
 //
 //        let newEntry2 = Thing(context: viewContext)
 //        newEntry2.newThing(thing: newEntry2)
 //        newEntry2.staticImage = "forest"
-//        newEntry2.viewModel = viewModel
+//        newEntry2.viewModels = viewModels
 
         
         let contentView = ContentView(imageCache: imageCache).environment(\.managedObjectContext, viewContext)

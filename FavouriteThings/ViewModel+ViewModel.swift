@@ -9,34 +9,17 @@
 import CoreData
 import Foundation
 
+// Extension of ViewModels Class created by CoreData. Getters and setters translate Objective C Types to Swift friendly Types and vice-versa
 extension ViewModels {
+    /// Variable stores a title after drawing object from Database
     var titleStr: String {
         get { title ?? "" }
         set { title = newValue }
     }
+    /// Variable stores a list of Things after drawing object from Database
     var properThing: [Thing] {
         get { thing?.array as? [Thing] ?? [] }
         set { thing = NSOrderedSet(array: newValue)}
     }
-    
-    func newThing(thing: Thing){
-        thing.name = "Quack"
-        thing.like = "Quack Quack"
-        thing.type = "Quack Quack Quack Quack"
-        thing.purpose = "Quack Quack Quack"
-        thing.descript = "Quack Quack"
-        thing.staticImage = "duck"
-        thing.dynamicImage = ""
-        thing.notes = ""
-        thing.imageURL = ""
-        thing.descriptField = "Description"
-        thing.typeField = "Type"
-        thing.notesField = "Notes:"
-        thing.purposeField = "Purpose:"
-}
-
-//    func moveThing(_ indices: IndexSet, destination){
-//        self.properThing.move()
-//    }
     
 }

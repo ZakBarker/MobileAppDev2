@@ -13,6 +13,11 @@ import UIKit
 class ImageCache: ObservableObject {
     @ Published var imageStore: Dictionary<URL, Image> = [:]
     
+    /// Function provides image for display in the views
+    ///  - Parameters:
+    ///     - dynamicUrl: An image Url in String Form
+    ///  - Note: Function returns a dynamic Image Url to assign to an Instance of a Thing for later use. If Url does not correctly Convert to Image, returns empty String
+    /// - Returns: A String value for the Image Url if conversion is successfu
     func imageFromUrl(_ imageUrl: String) -> String{
         // Convert String to URL
         guard let url = URL(string: imageUrl)
@@ -34,16 +39,14 @@ class ImageCache: ObservableObject {
         return imageUrl
     }
     
-    /// Function provides image for display in the detail view
+    /// Function provides image for display in the views
+    ///  - Parameters:
+    ///     - dynamicUrl: The dynamic Url for a thing
+    ///     - staticUrl: The static Url for a thing
     ///  - Note: Replace the Image function within the **Detail View** with this function to display the desired image
     /// - Returns: An Image
     func displayImageDetail(_ dynamicUrl: String, staticUrl: String) -> Image{
         // If url provided can not be converted to URL, display placeholder image.
-        guard let url = URL(string: dynamicUrl)
-            else{
-                return Image(staticUrl)
-        }
-        // Also convert dynamic Image URL
         guard let dynamicUrl = URL(string: dynamicUrl)
             else{
                 return Image(staticUrl)
@@ -60,23 +63,4 @@ class ImageCache: ObservableObject {
             return Image(staticUrl)
         }
     }
-//
-//    /// Function provides image for display in Row View
-//    ///  - Note: Replace the Image function within the **Row View** with this function to display the desired image
-//    /// - Returns: An Image
-//    func displayImageRow() -> Image{
-//        // If dynamicImage string can not be converted to URL, display placeholder image.
-//        guard let url = URL(string: self.dynamicImage)
-//            else{
-//                return Image(self.staticImage)
-//        }
-//        // If dynamicImage exists in the imageCache, display image - else display placeholder image.
-//        if let img = self.imageCache[url] {
-//            return img
-//        }
-//        else{
-//            return Image(self.staticImage)
-//        }
-//    }
-//
 }
