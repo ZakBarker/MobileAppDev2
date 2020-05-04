@@ -51,7 +51,7 @@ class Thing: ObservableObject, Identifiable, Codable{
         self.like = like
         self.type = type
         self.purpose = purpose
-        self.description = description
+        self.  = description
         self.staticImage = staticImage
         self.dynamicImage = dynamicImage
         self.notes = notes

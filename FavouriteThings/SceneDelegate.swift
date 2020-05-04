@@ -20,11 +20,11 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
             fatalError("Nehoooooop")
         }
         
-        var img = "hi"
+        var imageCache = ImageCache()
         let viewContext = delegate.persistentContainer.viewContext
         
         
-        let contentView = ContentView(img: img).environment(\.managedObjectContext, viewContext)
+        let contentView = ContentView(imageCache: imageCache).environment(\.managedObjectContext, viewContext)
 
 //        // Section of code restores Images to all Things which are using a dynamic image
 //        for thing in viewModel.things {

@@ -14,6 +14,7 @@ struct RowView: View {
     @Environment(\.managedObjectContext) var context
     // Stores information for specific things for display
     @ObservedObject var thing: Thing
+    var imageCache = ImageCache
     var body: some View {
         HStack{
             // Called function which dynamically changes the display image based on input from Detail View.
