@@ -14,7 +14,7 @@ struct DetailView: View {
     @Environment(\.managedObjectContext) var context
     // @ObservableObject variable created for the purpose of Binding with TextFields
     @ObservedObject var thing: Thing
-    var imageCache: ImageCache
+    @ObservedObject var imageCache: ImageCache
     // dvm or Detail View Model stores all embedded text information. This includes placeholders and generic text which will be displayed on page.
     var body: some View {
                 ZStack{
@@ -23,9 +23,9 @@ struct DetailView: View {
                         TextField("Notes", text: $thing.notesFieldStr).font(.largeTitle)
                             .foregroundColor(Color(red: 1, green: 1, blue: 1, opacity: 0.9)).offset(y: -60)
                         TextField("Add Notes Here", text: $thing.notesStr).offset(y: -70).textFieldStyle(RoundedBorderTextFieldStyle())
-                        TextField("Insert image Url", text: $thing.imageURLStr, onCommit: {self.thing.imageFromUrl(self.thing.imageURLStr)}).offset(y: -70).textFieldStyle(RoundedBorderTextFieldStyle())
+                        TextField("Insert image Url", text: $thing.imageURLStr, onCommit: { if self.imageCache.imageFromUrl(self.thing.imageURLStr) != "" {self.thing.dynamicImage = self.imageCache.imageFromUrl(self.thing.imageURLStr) }}).offset(y: -70).textFieldStyle(RoundedBorderTextFieldStyle())
 //                        // Image is displayed by calling thing method which returns an Image type.
-                        thing.displayImageDetail().resizable().aspectRatio(contentMode: .fit).frame(width: 370.0).border(Color(hue: 0.584, saturation: 0.889, brightness: 0.504), width: /*@START_MENU_TOKEN@*/1/*@END_MENU_TOKEN@*/).offset(y: -70)
+                        imageCache.displayImageDetail(thing.dynamicImageStr, staticUrl: thing.staticImageStr).resizable().aspectRatio(contentMode: .fit).frame(width: 370.0).border(Color(hue: 0.584, saturation: 0.889, brightness: 0.504), width: /*@START_MENU_TOKEN@*/1/*@END_MENU_TOKEN@*/).offset(y: -70)
                         TextField("Insert Name", text: $thing.nameStr)
                             .font(.system(size: 30, weight: .heavy, design: .default))
                             .foregroundColor(Color(red: 1, green: 1, blue: 1, opacity: 0.9)).offset(y: -70)

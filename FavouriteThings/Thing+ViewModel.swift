@@ -97,28 +97,5 @@ extension Thing {
         }
         // If successful, Store image in imageCache and set dynamicImage to fit the url string
         self.dynamicImage = imageURL
-    }
-    
-    func displayImageDetail() -> Image{
-        if !self.dynamicImageStr.isEmpty {
-            guard let url = URL(string: self.dynamicImageStr)
-                else{
-                    return Image(self.staticImageStr)
-            }
-            // Use url to retrieve image data
-            guard let imageData = try? Data(contentsOf: url)
-                else {
-                    return Image(self.staticImageStr)
-            }
-            // Convert image data into image
-            guard let uiImage = UIImage(data: imageData) else {
-                return Image(self.staticImageStr)
-            }
-            return Image(uiImage: uiImage)
-        }
-        else{
-            return Image(self.staticImageStr)
-        }
-    }
-    
+    }    
 }

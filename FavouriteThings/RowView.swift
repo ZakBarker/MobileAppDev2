@@ -14,11 +14,11 @@ struct RowView: View {
     @Environment(\.managedObjectContext) var context
     // Stores information for specific things for display
     @ObservedObject var thing: Thing
-    var imageCache = ImageCache
+    var imageCache: ImageCache
     var body: some View {
         HStack{
             // Called function which dynamically changes the display image based on input from Detail View.
-            thing.displayImageDetail().resizable().frame(width: 70, height: 50)
+            imageCache.displayImageDetail(thing.dynamicImageStr, staticUrl: thing.staticImageStr).resizable().frame(width: 70, height: 50)
             VStack(alignment: .leading){
                 Text(thing.nameStr).bold()
                 Text(thing.likeStr)

@@ -16,7 +16,7 @@ struct MasterView: View {
     @Environment(\.managedObjectContext) var context
     @ObservedObject var viewModel: ViewModel
     @Environment(\.editMode) var mode
-    var imageCache: ImageCache
+    @ObservedObject var imageCache: ImageCache
     var body: some View {
         VStack{
             if mode?.wrappedValue == .active{
@@ -27,9 +27,9 @@ struct MasterView: View {
             }
             List {
                 ForEach(viewModel.properThing, id: \.self) { thing in
-                    NavigationLink(destination: DetailView(thing: thing, imageCache: imageCache)) {
+                    NavigationLink(destination: DetailView(thing: thing, imageCache: self.imageCache)) {
                         // Row View Stores functionality and UI instructions for each individual row
-                        RowView(thing: thing)
+                        RowView(thing: thing, imageCache: self.imageCache)
                     }
                         // On deletion of Instance, call function which removes Instance of thing from Thing array in View Model
                     }.onDelete { indices in

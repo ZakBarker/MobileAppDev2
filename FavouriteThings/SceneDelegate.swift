@@ -26,6 +26,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         
         let contentView = ContentView(imageCache: imageCache).environment(\.managedObjectContext, viewContext)
 
+
 //        // Section of code restores Images to all Things which are using a dynamic image
 //        for thing in viewModel.things {
 //            thing.imageFromUrl(thing.dynamicImage)
