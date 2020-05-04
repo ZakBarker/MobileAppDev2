@@ -15,7 +15,6 @@ struct DetailView: View {
     // @ObservableObject variable created for the purpose of Binding with TextFields
     @ObservedObject var thing: Thing
     @ObservedObject var imageCache: ImageCache
-    // dvm or Detail View Model stores all embedded text information. This includes placeholders and generic text which will be displayed on page.
     var body: some View {
                 ZStack{
                     Color(hue: 0, saturation: 0, brightness: 0).edgesIgnoringSafeArea(.all)

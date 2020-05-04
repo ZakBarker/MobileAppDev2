@@ -10,6 +10,7 @@ import Foundation
 import SwiftUI
 import UIKit
 
+// Provided to store dynamically sourced images from Urls. This is to help the app with performance.
 class ImageCache: ObservableObject {
     @ Published var imageStore: Dictionary<URL, Image> = [:]
     

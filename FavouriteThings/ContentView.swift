@@ -13,7 +13,6 @@ import CoreData
 
 struct ContentView: View {
     // View Model stores all information to be displayed in the View
-//    @ObservedObject var viewModel: ViewModel
     @Environment(\.managedObjectContext) var context
     @FetchRequest(sortDescriptors: [NSSortDescriptor(keyPath: \ViewModels.title, ascending: true)], animation: .default) var viewModels: FetchedResults<ViewModels>
     @ObservedObject var imageCache: ImageCache

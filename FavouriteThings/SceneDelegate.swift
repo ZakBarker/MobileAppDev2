@@ -20,7 +20,9 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
             fatalError("Nehoooooop")
         }
         
+        //Image Cache stores images for easy access by Application
         let imageCache = ImageCache()
+        //ViewContext created to pass container through to environment
         let viewContext = delegate.persistentContainer.viewContext
         
        
@@ -48,7 +50,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 //        newEntry2.staticImage = "forest"
 //        newEntry2.viewModels = viewModels
 
-        
+        // Passes environment Object along with Image Cache for use in Views. Environment contains CoreData
         let contentView = ContentView(imageCache: imageCache).environment(\.managedObjectContext, viewContext)
         
 
@@ -73,6 +75,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         // This occurs shortly after the scene enters the background, or when its session is discarded.
         // Release any resources associated with this scene that can be re-created the next time the scene connects.
         // The scene may re-connect later, as its session was not neccessarily discarded (see `application:didDiscardSceneSessions` instead).
+        // Code saves Application data on disconnect
         guard let delegate = UIApplication.shared.delegate as? AppDelegate else {
             fatalError("Nehoooooop")
         }
@@ -102,6 +105,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         // Called as the scene transitions from the foreground to the background.
         // Use this method to save data, release shared resources, and store enough scene-specific state information
         // to restore the scene back to its current state.
+        // Code saves Application data on disconnect
         guard let delegate = UIApplication.shared.delegate as? AppDelegate else {
             fatalError("Nehoooooop")
         }
