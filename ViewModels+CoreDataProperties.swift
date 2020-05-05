@@ -16,8 +16,9 @@ extension ViewModels {
     @nonobjc public class func fetchRequest() -> NSFetchRequest<ViewModels> {
         return NSFetchRequest<ViewModels>(entityName: "ViewModels")
     }
-
+    /// Application Title
     @NSManaged public var title: String?
+    /// List of Things
     @NSManaged public var thing: NSOrderedSet?
 
 }

@@ -22,4 +22,11 @@ extension ViewModels {
         set { thing = NSOrderedSet(array: newValue)}
     }
     
+    /// - Parameters:
+    ///     - indices: Initial Indices as IndexSet
+    ///     - destination: Index for object to Move to
+    /// - Remark: Function Reorders List in MasterView
+    func moveThing(indices: IndexSet, destination: Int){
+    self.properThing.move(fromOffsets: (indices as NSIndexSet) as IndexSet, toOffset: (destination))
+    }
 }

@@ -91,8 +91,8 @@ extension Thing {
         thing.dynamicImage = ""
         thing.notes = ""
         thing.imageURL = ""
-        thing.descriptField = "Description"
-        thing.typeField = "Type"
+        thing.descriptField = "Description:"
+        thing.typeField = "Type:"
         thing.notesField = "Notes:"
         thing.purposeField = "Purpose:"
     }   

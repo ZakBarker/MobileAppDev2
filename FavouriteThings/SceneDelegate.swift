@@ -33,6 +33,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
             // If DataBase is empty, Create new ViewModel in context and append dummy data
             if dumbModel.isEmpty {
                 let dumbData = ViewModels(context: viewContext)
+                dumbData.title = "Favourite Things"
                 let thing1 = Thing(context: viewContext)
                 thing1.newThing(thing: thing1)
                 thing1.staticImage = "forest"

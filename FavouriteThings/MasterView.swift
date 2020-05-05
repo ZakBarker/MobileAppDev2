@@ -36,7 +36,7 @@ struct MasterView: View {
                     }.onDelete { indices in
                         self.viewModels.removeFromThing(at: indices as NSIndexSet)
                     }.onMove { (indices, destination) in
-                        self.viewModels.properThing.move(fromOffsets: (indices as NSIndexSet) as IndexSet, toOffset: (destination))
+                        self.viewModels.moveThing(indices: indices, destination: destination)
                 }
             }
         .navigationBarTitle(mode?.wrappedValue == .active ? "" : viewModels.titleStr)
