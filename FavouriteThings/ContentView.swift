@@ -15,7 +15,9 @@ struct ContentView: View {
     // View Model stores all information to be displayed in the View
     @Environment(\.managedObjectContext) var context
     @FetchRequest(sortDescriptors: [NSSortDescriptor(keyPath: \ViewModels.title, ascending: true)], animation: .default) var viewModels: FetchedResults<ViewModels>
+    // ImageCache Used for display and storing of images
     @ObservedObject var imageCache: ImageCache
+//    var dumbModel: ViewModels
     var body: some View {
         NavigationView{
             MasterView(viewModels: viewModels.first ?? ViewModels(context: context), imageCache: imageCache)

@@ -16,6 +16,7 @@ struct MasterView: View {
     @Environment(\.managedObjectContext) var context
     @ObservedObject var viewModels: ViewModels
     @Environment(\.editMode) var mode
+    // ImageCache Used for display and storing of images
     @ObservedObject var imageCache: ImageCache
     var body: some View {
         VStack{

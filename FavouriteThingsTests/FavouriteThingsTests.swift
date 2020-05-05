@@ -11,7 +11,7 @@ import Foundation
 import SwiftUI
 @testable import FavouriteThings
 
-class ReferencerTests: XCTestCase {
+class FavouriteThingsTester: XCTestCase {
 
     
     override func setUp() {

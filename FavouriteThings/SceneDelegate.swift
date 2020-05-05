@@ -13,47 +13,54 @@ import CoreData
 class SceneDelegate: UIResponder, UIWindowSceneDelegate {
    
     var window: UIWindow?
-    
+        
     func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
         
         guard let delegate = UIApplication.shared.delegate as? AppDelegate else {
             fatalError("Nehoooooop")
         }
         
+        
+        var request = NSFetchRequest<NSFetchRequestResult>(entityName: "ViewModels")
         //Image Cache stores images for easy access by Application
         let imageCache = ImageCache()
         //ViewContext created to pass container through to environment
         let viewContext = delegate.persistentContainer.viewContext
         
-       
-        //print(self.viewModels.first?.properThing)
-        //        if self.viewModels.first?.properThing.description != "" {
-//            print("viewModel Works")
-//
-//        }
-//        for i in viewModel.properThing {
-//            imageCache.imageFromUrl(i.dynamicImageStr)
-//        }
-//        var viewModels = ViewModels(context: viewContext)
+        // Code Calls NSFetch Request to check if CoreData is empty.
+        do {
+            let dumbModel = try viewContext.fetch(request) as! [ViewModels]
+            // If DataBase is empty, Create new ViewModel in context and append dummy data
+            if dumbModel.isEmpty {
+                let dumbData = ViewModels(context: viewContext)
+                let thing1 = Thing(context: viewContext)
+                thing1.newThing(thing: thing1)
+                thing1.staticImage = "forest"
+                thing1.viewModels = dumbData
+                let thing2 = Thing(context: viewContext)
+                thing2.newThing(thing: thing2)
+                thing2.staticImage = "daft"
+                thing2.viewModels = dumbData
+                let thing3 = Thing(context: viewContext)
+                thing3.newThing(thing: thing3)
+                thing3.staticImage = "draw"
+                thing3.viewModels = dumbData
+            }
+            // If DataBase exists, Check each instance of type Thing for dynamic Image and call function to append these to imageCache Dictionary for later use of displaying Dynamic image in View.
+            else {
+                let dumbData = dumbModel.first
+                // Value is safely force unwrapped because it can be inferred that option will never return "nil" based on top level of if/else statement
+                for thing in dumbData!.properThing{
+                    imageCache.imageFromUrl(thing.dynamicImageStr)
+                }
+            }
+        } catch {
+            fatalError("Failed to fetch employees: \(error)")
+        }
 
-//        let newEntry = Thing(context: viewContext)
-//        newEntry.newThing(thing: newEntry)
-//        newEntry.viewModels = viewModels
-//
-//        let newEntry1 = Thing(context: viewContext)
-//        newEntry1.newThing(thing: newEntry1)
-//        newEntry1.staticImage = "daft"
-//        newEntry1.viewModels = viewModels
-//
-//        let newEntry2 = Thing(context: viewContext)
-//        newEntry2.newThing(thing: newEntry2)
-//        newEntry2.staticImage = "forest"
-//        newEntry2.viewModels = viewModels
 
         // Passes environment Object along with Image Cache for use in Views. Environment contains CoreData
         let contentView = ContentView(imageCache: imageCache).environment(\.managedObjectContext, viewContext)
-        
-
 
 
 //        // Section of code restores Images to all Things which are using a dynamic image

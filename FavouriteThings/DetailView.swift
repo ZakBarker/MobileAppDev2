@@ -14,6 +14,7 @@ struct DetailView: View {
     @Environment(\.managedObjectContext) var context
     // @ObservableObject variable created for the purpose of Binding with TextFields
     @ObservedObject var thing: Thing
+    // ImageCache Used for display and storing of images
     @ObservedObject var imageCache: ImageCache
     var body: some View {
                 ZStack{
