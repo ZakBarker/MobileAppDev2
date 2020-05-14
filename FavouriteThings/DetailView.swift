@@ -33,6 +33,13 @@ struct DetailView: View {
                             .font(.system(size: 24, weight: .medium, design: .default))
                             .foregroundColor(Color(red: 1, green: 1, blue: 1, opacity: 0.9)).offset(y: -75)
                         HStack {
+                            Text("Location: ").foregroundColor(Color.white)
+                                
+                            NavigationLink(destination: MapView(thing: thing)){
+                                    Text(thing.locationNameStr)
+                            }
+                        }.offset(y:-75)
+                        HStack {
                             TextField("Type", text: $thing.typeFieldStr)
                                 .multilineTextAlignment(.trailing).foregroundColor(Color(red: 1, green: 1, blue: 1, opacity: 0.9)).offset(x: -60, y: -70)
                                 .font(.system(size: 18, weight: .heavy, design: .default))

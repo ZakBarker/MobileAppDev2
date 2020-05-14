@@ -9,6 +9,7 @@ import CoreData
 import Foundation
 import UIKit
 import SwiftUI
+import CoreLocation
 
 // Extension of Thing Class created by CoreData. Getters and setters translate Objective C Types to Swift friendly Types and vice-versa
 extension Thing {
@@ -77,6 +78,18 @@ extension Thing {
            get { purposeField ?? "" }
            set { purposeField = newValue }
        }
+    var locationNameStr: String {
+           get { locationName ?? "" }
+           set { locationName = newValue }
+       }
+    var locationXStr: String {
+           get { locationX ?? "" }
+           set { locationX = newValue }
+       }
+    var locationYStr: String {
+           get { locationY ?? "" }
+           set { locationY = newValue }
+       }
     
     /// - Parameters:
     ///     - thing: Instance of type Thing
@@ -95,5 +108,29 @@ extension Thing {
         thing.typeField = "Type:"
         thing.notesField = "Notes:"
         thing.purposeField = "Purpose:"
-    }   
+        thing.locationName = "Griffith"
+        thing.locationX = "22"
+        thing.locationY = "33"
+    }
+    
+    func findLocation(thing: Thing) -> String{
+        var currentPosition = CLLocationCoordinate2D(latitude: -22, longitude: -150)
+        let geocoder = CLGeocoder()
+        let region = CLCircularRegion(center: currentPosition, radius: 2_000_000, identifier: "\(currentPosition)")
+        geocoder.geocodeAddressString(thing.locationNameStr, in: region) {(placemarks, error) in
+            guard let location = placemarks?.first?.location else {
+                print ("Error location")
+                return ("Hi")
+            }
+            let position = location.coordinate
+            currentPosition.latitude = position.latitude
+            currentPosition.longitude = position.longitude
+            thing.locationXStr = "\(position.latitude)"
+            thing.locationYStr = "\(position.longitude)"
+        }
+    }
+    
+    func findCoordinates(thing: Thing) {
+        
+    }
 }
