@@ -113,24 +113,41 @@ extension Thing {
         thing.locationY = "33"
     }
     
-    func findLocation(thing: Thing) -> String{
+    func findLocation(){
         var currentPosition = CLLocationCoordinate2D(latitude: -22, longitude: -150)
         let geocoder = CLGeocoder()
         let region = CLCircularRegion(center: currentPosition, radius: 2_000_000, identifier: "\(currentPosition)")
-        geocoder.geocodeAddressString(thing.locationNameStr, in: region) {(placemarks, error) in
+        geocoder.geocodeAddressString(self.locationNameStr, in: region) {(placemarks, error) in
             guard let location = placemarks?.first?.location else {
                 print ("Error location")
-                return ("Hi")
+                return
             }
             let position = location.coordinate
             currentPosition.latitude = position.latitude
             currentPosition.longitude = position.longitude
-            thing.locationXStr = "\(position.latitude)"
-            thing.locationYStr = "\(position.longitude)"
+            self.locationXStr = "\(position.latitude)"
+            self.locationYStr = "\(position.longitude)"
         }
     }
     
-    func findCoordinates(thing: Thing) {
+    func findCoordinates() {
+        var currentPosition = CLLocationCoordinate2D(latitude: -22, longitude: -150)
+        guard let latitude = CLLocationDegrees(self.locationXStr),
+            let longitude = CLLocationDegrees(self.locationYStr) else {
+                print("Invalid")
+                return
+        }
+        currentPosition.latitude = latitude
+        currentPosition.longitude = longitude
         
+        let geoCoder = CLGeocoder()
+        let position = CLLocation(latitude: currentPosition.latitude, longitude: currentPosition.longitude)
+        geoCoder.reverseGeocodeLocation(position) { (placemarks, error) in
+            guard let placemark = placemarks?.first else {
+                print("Error Location")
+                return
+            }
+            self.locationNameStr = placemark.name ?? placemark.locality ?? placemark.subLocality ?? placemark.administrativeArea ?? placemark.country ?? "Unknown"
+        }
     }
 }
