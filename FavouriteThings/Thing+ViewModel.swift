@@ -90,14 +90,6 @@ extension Thing {
            get { locationY ?? "" }
            set { locationY = newValue }
        }
-//    var latitudeDub: Double {
-//        get { latitude ?? 0 }
-//        set { latitude = newValue}
-//    }
-//    var longitudeDub: Double {
-//        get { longitude ?? 0 }
-//        set { longitude = newValue}
-//    }
         
     /// - Parameters:
     ///     - thing: Instance of type Thing
@@ -117,8 +109,8 @@ extension Thing {
         thing.notesField = "Notes:"
         thing.purposeField = "Purpose:"
         thing.locationName = "Griffith"
-        thing.locationX = ""
-        thing.locationY = ""
+        thing.locationX = "0"
+        thing.locationY = "0"
         thing.latitude = 0
         thing.longitude = 0
     }
@@ -141,22 +133,29 @@ extension Thing {
     }
     
     func findCoordinates(){
-        guard let latitude = CLLocationDegrees(self.locationXStr),
-            let longitude = CLLocationDegrees(self.locationYStr) else {
-                print("Invalid")
-                return
-        }
-        self.latitude = latitude
-        self.longitude = longitude
-        
-        let geoCoder = CLGeocoder()
-        let position = CLLocation(latitude: self.latitude, longitude: self.longitude)
-        geoCoder.reverseGeocodeLocation(position) { (placemarks, error) in
-            guard let placemark = placemarks?.first else {
-                print("Error Location")
-                return
+        if Double(self.locationXStr) ?? 90 <= 89.99 && Double(self.locationXStr) ?? 90 >= -89.99 && Double(self.locationYStr) ?? 180 <= 179.99 && Double(self.locationYStr) ?? 180 >= -179.99 {
+            guard let latitude = CLLocationDegrees(self.locationXStr),
+                let longitude = CLLocationDegrees(self.locationYStr) else {
+                    print("Invalid")
+                    return
             }
-            self.locationNameStr = placemark.name ?? placemark.locality ?? placemark.subLocality ?? placemark.administrativeArea ?? placemark.country ?? "Unknown"
+            self.latitude = latitude
+            self.longitude = longitude
+            
+            let geoCoder = CLGeocoder()
+            let position = CLLocation(latitude: self.latitude, longitude: self.longitude)
+            geoCoder.reverseGeocodeLocation(position) { (placemarks, error) in
+                guard let placemark = placemarks?.first else {
+                    print("Error Location")
+                    return
+                }
+                self.locationNameStr = placemark.name ?? placemark.locality ?? placemark.subLocality ?? placemark.administrativeArea ?? placemark.country ?? "Unknown"
+            }
+        }
+        else {
+            self.locationXStr = "Sorry"
+            self.locationYStr = "Invalid Input"
+            return
         }
     }
 }

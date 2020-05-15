@@ -21,8 +21,4 @@ struct MapDisplayView: UIViewRepresentable {
         let region = MKCoordinateRegion(center: CLLocationCoordinate2D(latitude: self.thing.latitude, longitude: self.thing.longitude), latitudinalMeters: 10_000, longitudinalMeters: 10_000)
         mapView.setRegion(region, animated: true)
     }
-    
-//    var body: some View {
-//        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/).foregroundColor(Color.white)
-//    }
 }
