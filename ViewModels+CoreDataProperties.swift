@@ -2,7 +2,7 @@
 //  ViewModels+CoreDataProperties.swift
 //  FavouriteThings
 //
-//  Created by Zak Barker on 14/5/20.
+//  Created by Zak Barker on 15/5/20.
 //  Copyright © 2020 Zak Barker. All rights reserved.
 //
 //

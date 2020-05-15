@@ -90,16 +90,24 @@ extension Thing {
            get { locationY ?? "" }
            set { locationY = newValue }
        }
-    
+//    var latitudeDub: Double {
+//        get { latitude ?? 0 }
+//        set { latitude = newValue}
+//    }
+//    var longitudeDub: Double {
+//        get { longitude ?? 0 }
+//        set { longitude = newValue}
+//    }
+        
     /// - Parameters:
     ///     - thing: Instance of type Thing
     /// - Remark: Function Populates New Instances with data
     func newThing(thing: Thing){
-        thing.name = "Quack"
-        thing.like = "Quack Quack"
-        thing.type = "Quack Quack Quack Quack"
-        thing.purpose = "Quack Quack Quack"
-        thing.descript = "Quack Quack"
+        thing.name = ""
+        thing.like = ""
+        thing.type = ""
+        thing.purpose = ""
+        thing.descript = ""
         thing.staticImage = "duck"
         thing.dynamicImage = ""
         thing.notes = ""
@@ -109,12 +117,14 @@ extension Thing {
         thing.notesField = "Notes:"
         thing.purposeField = "Purpose:"
         thing.locationName = "Griffith"
-        thing.locationX = "22"
-        thing.locationY = "33"
+        thing.locationX = ""
+        thing.locationY = ""
+        thing.latitude = 0
+        thing.longitude = 0
     }
     
-    func findLocation(){
-        var currentPosition = CLLocationCoordinate2D(latitude: -22, longitude: -150)
+    func findLocation() {
+        let currentPosition = CLLocationCoordinate2D(latitude: self.latitude, longitude: self.longitude)
         let geocoder = CLGeocoder()
         let region = CLCircularRegion(center: currentPosition, radius: 2_000_000, identifier: "\(currentPosition)")
         geocoder.geocodeAddressString(self.locationNameStr, in: region) {(placemarks, error) in
@@ -123,25 +133,26 @@ extension Thing {
                 return
             }
             let position = location.coordinate
-            currentPosition.latitude = position.latitude
-            currentPosition.longitude = position.longitude
+            self.latitude = position.latitude
+            self.longitude = position.longitude
+            print("\(currentPosition) is here in Model")
             self.locationXStr = "\(position.latitude)"
             self.locationYStr = "\(position.longitude)"
         }
     }
     
-    func findCoordinates() {
-        var currentPosition = CLLocationCoordinate2D(latitude: -22, longitude: -150)
+    func findCoordinates(){
+//        var currentPosition = CLLocationCoordinate2D(latitude: self.latitude, longitude: self.longitude)
         guard let latitude = CLLocationDegrees(self.locationXStr),
             let longitude = CLLocationDegrees(self.locationYStr) else {
                 print("Invalid")
                 return
         }
-        currentPosition.latitude = latitude
-        currentPosition.longitude = longitude
+        self.latitude = latitude
+        self.longitude = longitude
         
         let geoCoder = CLGeocoder()
-        let position = CLLocation(latitude: currentPosition.latitude, longitude: currentPosition.longitude)
+        let position = CLLocation(latitude: self.latitude, longitude: self.longitude)
         geoCoder.reverseGeocodeLocation(position) { (placemarks, error) in
             guard let placemark = placemarks?.first else {
                 print("Error Location")
