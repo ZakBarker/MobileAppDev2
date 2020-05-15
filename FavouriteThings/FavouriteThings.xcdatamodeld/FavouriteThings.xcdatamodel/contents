@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="16119" systemVersion="19D76" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
     <entity name="Thing" representedClassName="Thing" syncable="YES" codeGenerationType="class">
-        <attribute name="attribute" optional="YES"/>
         <attribute name="descript" optional="YES" attributeType="String"/>
         <attribute name="descriptField" optional="YES" attributeType="String"/>
         <attribute name="dynamicImage" optional="YES" attributeType="String"/>
@@ -27,7 +26,7 @@
         <relationship name="thing" optional="YES" toMany="YES" deletionRule="Nullify" ordered="YES" destinationEntity="Thing" inverseName="viewModels" inverseEntity="Thing"/>
     </entity>
     <elements>
-        <element name="Thing" positionX="-287.7265625" positionY="14.17578125" width="128" height="343"/>
+        <element name="Thing" positionX="-287.7265625" positionY="14.17578125" width="128" height="328"/>
         <element name="ViewModels" positionX="-73.9375" positionY="119.01171875" width="128" height="73"/>
     </elements>
 </model>

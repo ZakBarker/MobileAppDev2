@@ -12,7 +12,7 @@ import SwiftUI
 import CoreLocation
 
 // Extension of Thing Class created by CoreData. Getters and setters translate Objective C Types to Swift friendly Types and vice-versa
-extension Thing {
+extension Thing{
     /// Variable stores a name after drawing object from Database
     var nameStr: String {
         get { name ?? "" }
