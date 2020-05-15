@@ -14,10 +14,12 @@ struct MapDisplayView: UIViewRepresentable {
     
     func makeUIView(context: Context) -> MKMapView {
         let mapView = MKMapView(frame: .zero)
+        mapView.delegate = thing
         return mapView
     }
     
     func updateUIView(_ mapView: MKMapView, context: Context) {
+        guard !self.thing.isUpdating else { return }
         let region = MKCoordinateRegion(center: CLLocationCoordinate2D(latitude: self.thing.latitude, longitude: self.thing.longitude), latitudinalMeters: 10_000, longitudinalMeters: 10_000)
         mapView.setRegion(region, animated: true)
     }

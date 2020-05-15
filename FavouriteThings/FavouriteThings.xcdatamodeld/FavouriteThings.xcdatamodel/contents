@@ -5,6 +5,7 @@
         <attribute name="descriptField" optional="YES" attributeType="String"/>
         <attribute name="dynamicImage" optional="YES" attributeType="String"/>
         <attribute name="imageURL" optional="YES" attributeType="String"/>
+        <attribute name="isUpdating" optional="YES" attributeType="Boolean" usesScalarValueType="YES"/>
         <attribute name="latitude" optional="YES" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES"/>
         <attribute name="like" optional="YES" attributeType="String"/>
         <attribute name="locationName" optional="YES" attributeType="String"/>
@@ -26,7 +27,7 @@
         <relationship name="thing" optional="YES" toMany="YES" deletionRule="Nullify" ordered="YES" destinationEntity="Thing" inverseName="viewModels" inverseEntity="Thing"/>
     </entity>
     <elements>
-        <element name="Thing" positionX="-287.7265625" positionY="14.17578125" width="128" height="328"/>
+        <element name="Thing" positionX="-287.7265625" positionY="14.17578125" width="128" height="343"/>
         <element name="ViewModels" positionX="-73.9375" positionY="119.01171875" width="128" height="73"/>
     </elements>
 </model>

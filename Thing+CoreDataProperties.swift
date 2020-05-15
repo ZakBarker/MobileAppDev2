@@ -21,10 +21,12 @@ extension Thing {
     @NSManaged public var descriptField: String?
     @NSManaged public var dynamicImage: String?
     @NSManaged public var imageURL: String?
+    @NSManaged public var latitude: Double
     @NSManaged public var like: String?
     @NSManaged public var locationName: String?
     @NSManaged public var locationX: String?
     @NSManaged public var locationY: String?
+    @NSManaged public var longitude: Double
     @NSManaged public var name: String?
     @NSManaged public var notes: String?
     @NSManaged public var notesField: String?
@@ -33,8 +35,7 @@ extension Thing {
     @NSManaged public var staticImage: String?
     @NSManaged public var type: String?
     @NSManaged public var typeField: String?
-    @NSManaged public var latitude: Double
-    @NSManaged public var longitude: Double
+    @NSManaged public var isUpdating: Bool
     @NSManaged public var viewModels: ViewModels?
 
 }

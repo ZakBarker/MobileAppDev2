@@ -113,6 +113,7 @@ extension Thing{
         thing.locationY = "0"
         thing.latitude = 0
         thing.longitude = 0
+        thing.isUpdating = false
     }
     
     func findLocation() {
