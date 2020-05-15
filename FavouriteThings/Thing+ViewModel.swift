@@ -135,14 +135,12 @@ extension Thing {
             let position = location.coordinate
             self.latitude = position.latitude
             self.longitude = position.longitude
-            print("\(currentPosition) is here in Model")
             self.locationXStr = "\(position.latitude)"
             self.locationYStr = "\(position.longitude)"
         }
     }
     
     func findCoordinates(){
-//        var currentPosition = CLLocationCoordinate2D(latitude: self.latitude, longitude: self.longitude)
         guard let latitude = CLLocationDegrees(self.locationXStr),
             let longitude = CLLocationDegrees(self.locationYStr) else {
                 print("Invalid")

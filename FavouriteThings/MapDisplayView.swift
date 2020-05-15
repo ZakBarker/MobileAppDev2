@@ -18,9 +18,8 @@ struct MapDisplayView: UIViewRepresentable {
     }
     
     func updateUIView(_ mapView: MKMapView, context: Context) {
-        let region = MKCoordinateRegion(center: self.currentPosition, latitudinalMeters: 10_000, longitudinalMeters: 10_000)
+        let region = MKCoordinateRegion(center: CLLocationCoordinate2D(latitude: self.thing.latitude, longitude: self.thing.longitude), latitudinalMeters: 10_000, longitudinalMeters: 10_000)
         mapView.setRegion(region, animated: true)
-        print("\(self.currentPosition)")
     }
     
 //    var body: some View {
