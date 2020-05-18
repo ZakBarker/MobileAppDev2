@@ -22,8 +22,8 @@ extension Thing: MKMapViewDelegate {
             let centre = mapView.centerCoordinate
             self.latitude = centre.latitude
             self.longitude = centre.longitude
-            self.locationXStr = "\(centre.latitude)"
-            self.locationYStr = "\(centre.longitude)"
+            self.longitudeStr = "\(centre.latitude)"
+            self.longitudeStr = "\(centre.longitude)"
             self.isUpdating = false
         }
     }

@@ -84,12 +84,12 @@ extension Thing{
            set { locationName = newValue }
        }
     /// Variable stores a Latitude after drawing object from Database
-    var locationXStr: String {
+    var latitudeStr: String {
            get { locationX ?? "" }
            set { locationX = newValue }
        }
     /// Variable stores a Longitude after drawing object from Database
-    var locationYStr: String {
+    var longitudeStr: String {
            get { locationY ?? "" }
            set { locationY = newValue }
        }
@@ -132,16 +132,16 @@ extension Thing{
             let position = location.coordinate
             self.latitude = position.latitude
             self.longitude = position.longitude
-            self.locationXStr = "\(position.latitude)"
-            self.locationYStr = "\(position.longitude)"
+            self.latitudeStr = "\(position.latitude)"
+            self.longitudeStr = "\(position.longitude)"
         }
     }
     
     /// - Remark: Sets the Location Name based on the Latitude & Longitude inputs
     func findCoordinates(){
-        if Double(self.locationXStr) ?? 90 <= 89.99 && Double(self.locationXStr) ?? 90 >= -89.99 && Double(self.locationYStr) ?? 180 <= 179.99 && Double(self.locationYStr) ?? 180 >= -179.99 {
-            guard let latitude = CLLocationDegrees(self.locationXStr),
-                let longitude = CLLocationDegrees(self.locationYStr) else {
+        if Double(self.latitudeStr) ?? 90 <= 89.99 && Double(self.latitudeStr) ?? 90 >= -89.99 && Double(self.longitudeStr) ?? 180 <= 179.99 && Double(self.longitudeStr) ?? 180 >= -179.99 {
+            guard let latitude = CLLocationDegrees(self.latitudeStr),
+                let longitude = CLLocationDegrees(self.longitudeStr) else {
                     print("Invalid")
                     return
             }
@@ -159,8 +159,8 @@ extension Thing{
             }
         }
         else {
-            self.locationXStr = "Sorry"
-            self.locationYStr = "Invalid Input"
+            self.latitudeStr = "Sorry"
+            self.longitudeStr = "Invalid Input"
             return
         }
     }
