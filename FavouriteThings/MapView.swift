@@ -27,7 +27,7 @@ struct MapView: View {
                 HStack {
                     Text("Latitude: ").foregroundColor(Color.white)
                     .offset(y:-50)
-                    TextField("Enter Latitude", text: $thing.longitudeStr)
+                    TextField("Enter Latitude", text: $thing.latitudeStr)
                     .multilineTextAlignment(.leading).foregroundColor(Color(red: 1, green: 1, blue: 1, opacity: 0.9)).offset(y: -50)
                 }
                 HStack {

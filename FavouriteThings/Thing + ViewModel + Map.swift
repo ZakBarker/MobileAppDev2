@@ -22,7 +22,7 @@ extension Thing: MKMapViewDelegate {
             let centre = mapView.centerCoordinate
             self.latitude = centre.latitude
             self.longitude = centre.longitude
-            self.longitudeStr = "\(centre.latitude)"
+            self.latitudeStr = "\(centre.latitude)"
             self.longitudeStr = "\(centre.longitude)"
             self.isUpdating = false
         }

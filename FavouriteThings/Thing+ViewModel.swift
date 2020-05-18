@@ -85,13 +85,13 @@ extension Thing{
        }
     /// Variable stores a Latitude after drawing object from Database
     var latitudeStr: String {
-           get { locationX ?? "" }
-           set { locationX = newValue }
+           get { latitudeString ?? "" }
+           set { latitudeString = newValue }
        }
     /// Variable stores a Longitude after drawing object from Database
     var longitudeStr: String {
-           get { locationY ?? "" }
-           set { locationY = newValue }
+           get { longitudeString ?? "" }
+           set { longitudeString = newValue }
        }
         
     /// - Parameters:
@@ -112,8 +112,8 @@ extension Thing{
         thing.notesField = "Notes:"
         thing.purposeField = "Purpose:"
         thing.locationName = "New York"
-        thing.locationX = "40.7"
-        thing.locationY = "-74.007"
+        thing.latitudeString = "40.7"
+        thing.longitudeString = "-74.007"
         thing.latitude = 40.7
         thing.longitude = -74.007
         thing.isUpdating = false
