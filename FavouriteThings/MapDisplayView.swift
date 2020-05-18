@@ -9,9 +9,11 @@
 import SwiftUI
 import MapKit
 
+// Displays the actual Map Interface within the Map and acts as a Controller
 struct MapDisplayView: UIViewRepresentable {
     @ObservedObject var thing: Thing
     
+    /// - Remark: Initializes the Map, Declares Delegate and Sets Initial Region
     func makeUIView(context: Context) -> MKMapView {
         let mapView = MKMapView(frame: .zero)
         let region = MKCoordinateRegion(center: CLLocationCoordinate2D(latitude: self.thing.latitude, longitude: self.thing.longitude), latitudinalMeters: 100_000, longitudinalMeters: 100_000)
@@ -20,13 +22,10 @@ struct MapDisplayView: UIViewRepresentable {
         return mapView
     }
     
+    /// - Remark: Continually updates Map
     func updateUIView(_ mapView: MKMapView, context: Context) {
         guard !self.thing.isUpdating else { return }
-        print("#####################################")
-        print("UIView Before: \(self.thing.locationXStr)")
         let region = MKCoordinateRegion(center: CLLocationCoordinate2D(latitude: self.thing.latitude, longitude: self.thing.longitude), latitudinalMeters: 100_000, longitudinalMeters: 100_000)
-        print("UIView After: \(self.thing.locationXStr)")
-
         mapView.setRegion(region, animated: true)
     }
 }

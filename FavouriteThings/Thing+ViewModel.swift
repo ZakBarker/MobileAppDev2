@@ -78,14 +78,17 @@ extension Thing{
            get { purposeField ?? "" }
            set { purposeField = newValue }
        }
+    /// Variable stores a Location Name  after drawing object from Database
     var locationNameStr: String {
            get { locationName ?? "" }
            set { locationName = newValue }
        }
+    /// Variable stores a Latitude after drawing object from Database
     var locationXStr: String {
            get { locationX ?? "" }
            set { locationX = newValue }
        }
+    /// Variable stores a Longitude after drawing object from Database
     var locationYStr: String {
            get { locationY ?? "" }
            set { locationY = newValue }
@@ -116,6 +119,7 @@ extension Thing{
         thing.isUpdating = false
     }
     
+    /// - Remark: Sets the Location of X and Y locations based on Location Name Input
     func findLocation() {
         let currentPosition = CLLocationCoordinate2D(latitude: self.latitude, longitude: self.longitude)
         let geocoder = CLGeocoder()
@@ -130,11 +134,10 @@ extension Thing{
             self.longitude = position.longitude
             self.locationXStr = "\(position.latitude)"
             self.locationYStr = "\(position.longitude)"
-            print("--------- \(self.latitude)")
-            print("--------- \(self.locationXStr)")
         }
     }
     
+    /// - Remark: Sets the Location Name based on the Latitude & Longitude inputs
     func findCoordinates(){
         if Double(self.locationXStr) ?? 90 <= 89.99 && Double(self.locationXStr) ?? 90 >= -89.99 && Double(self.locationYStr) ?? 180 <= 179.99 && Double(self.locationYStr) ?? 180 >= -179.99 {
             guard let latitude = CLLocationDegrees(self.locationXStr),

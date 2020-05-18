@@ -9,25 +9,21 @@
 import Foundation
 import MapKit
 
+// Extension adds User interaction Functionality to Map Delegate
 extension Thing: MKMapViewDelegate {
     
-    
+    /// - Remark: Updates Latitude and Longitude as Map Region Changes
     public func mapViewDidChangeVisibleRegion(_ mapView: MKMapView) {
         guard !self.isUpdating else {
             return
         }
-        print("View did Change Before: \(self.locationXStr)")
         self.isUpdating = true
-        print("Happened")
         DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + .milliseconds(1000)) {
             let centre = mapView.centerCoordinate
-            print("Center:   \(centre)")
             self.latitude = centre.latitude
             self.longitude = centre.longitude
             self.locationXStr = "\(centre.latitude)"
             self.locationYStr = "\(centre.longitude)"
-            print("View did Change After: \(self.locationXStr)")
-            print(self.locationYStr)
             self.isUpdating = false
         }
     }
