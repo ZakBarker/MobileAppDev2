@@ -20,7 +20,7 @@ struct MapView: View {
             VStack(alignment: .leading) {
                 HStack {
                     Text("Location: ").foregroundColor(Color.white)
-                        .offset(y:-50).onAppear(perform: {self.thing.findLocation()})
+                        .offset(y:-50)
                     TextField("Location", text: $thing.locationNameStr)
                     .multilineTextAlignment(.leading).foregroundColor(Color(red: 1, green: 1, blue: 1, opacity: 0.9)).offset(y: -50)
                 }

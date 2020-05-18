@@ -21,18 +21,14 @@ extension Thing: MKMapViewDelegate {
         print("Happened")
         DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + .milliseconds(1000)) {
             let centre = mapView.centerCoordinate
-                    print("Center:   \(centre)")
-                    self.latitude = centre.latitude
-                    self.longitude = centre.longitude
-                    self.locationXStr = "\(centre.latitude)"
-                    self.locationYStr = "\(centre.longitude)"
-                    print("View did Change After: \(self.locationXStr)")
-                    print(self.locationYStr)
-        }
-
-        DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + .milliseconds(2000)) {
+            print("Center:   \(centre)")
+            self.latitude = centre.latitude
+            self.longitude = centre.longitude
+            self.locationXStr = "\(centre.latitude)"
+            self.locationYStr = "\(centre.longitude)"
+            print("View did Change After: \(self.locationXStr)")
+            print(self.locationYStr)
             self.isUpdating = false
-            
         }
     }
 }
