@@ -20,7 +20,11 @@ struct MapDisplayView: UIViewRepresentable {
     
     func updateUIView(_ mapView: MKMapView, context: Context) {
         guard !self.thing.isUpdating else { return }
-        let region = MKCoordinateRegion(center: CLLocationCoordinate2D(latitude: self.thing.latitude, longitude: self.thing.longitude), latitudinalMeters: 10_000, longitudinalMeters: 10_000)
+        print("#####################################")
+        print("UIView Before: \(self.thing.locationXStr)")
+        let region = MKCoordinateRegion(center: CLLocationCoordinate2D(latitude: self.thing.latitude, longitude: self.thing.longitude), latitudinalMeters: 100_000, longitudinalMeters: 100_000)
+        print("UIView After: \(self.thing.locationXStr)")
+
         mapView.setRegion(region, animated: true)
     }
 }

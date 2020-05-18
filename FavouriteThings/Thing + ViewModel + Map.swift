@@ -16,13 +16,23 @@ extension Thing: MKMapViewDelegate {
         guard !self.isUpdating else {
             return
         }
+        print("View did Change Before: \(self.locationXStr)")
         self.isUpdating = true
         print("Happened")
-        let centre = mapView.centerCoordinate
-        self.latitude = centre.latitude
-        self.longitude = centre.longitude
-        DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + .milliseconds(250)) {
+        DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + .milliseconds(1000)) {
+            let centre = mapView.centerCoordinate
+                    print("Center:   \(centre)")
+                    self.latitude = centre.latitude
+                    self.longitude = centre.longitude
+                    self.locationXStr = "\(centre.latitude)"
+                    self.locationYStr = "\(centre.longitude)"
+                    print("View did Change After: \(self.locationXStr)")
+                    print(self.locationYStr)
+        }
+
+        DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + .milliseconds(2000)) {
             self.isUpdating = false
+            
         }
     }
 }

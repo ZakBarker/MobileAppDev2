@@ -20,21 +20,27 @@ struct MapView: View {
             VStack(alignment: .leading) {
                 HStack {
                     Text("Location: ").foregroundColor(Color.white)
-                    .offset(y:-50)
-                    TextField("Location", text: $thing.locationNameStr, onCommit: {  self.thing.findLocation() })
+                        .offset(y:-50).onAppear(perform: {self.thing.findLocation()})
+                    TextField("Location", text: $thing.locationNameStr)
                     .multilineTextAlignment(.leading).foregroundColor(Color(red: 1, green: 1, blue: 1, opacity: 0.9)).offset(y: -50)
                 }
                 HStack {
                     Text("Latitude: ").foregroundColor(Color.white)
                     .offset(y:-50)
-                    TextField("Enter Latitude", text: $thing.locationXStr, onCommit: { self.thing.findCoordinates() })
+                    TextField("Enter Latitude", text: $thing.locationXStr)
                     .multilineTextAlignment(.leading).foregroundColor(Color(red: 1, green: 1, blue: 1, opacity: 0.9)).offset(y: -50)
                 }
                 HStack {
                     Text("Longitude: ").foregroundColor(Color.white)
-                    .offset(y:-50)
-                    TextField("Enter Longitude", text: $thing.locationYStr, onCommit: {  self.thing.findCoordinates() })
-                    .multilineTextAlignment(.leading).foregroundColor(Color(red: 1, green: 1, blue: 1, opacity: 0.9)).offset(y: -50)
+                        .offset(y:-50)
+                    TextField("Enter Longitude", text: $thing.locationYStr)
+                        .multilineTextAlignment(.leading).foregroundColor(Color(red: 1, green: 1, blue: 1, opacity: 0.9)).offset(y: -50)
+                }
+                Button("Find Coordinates for Location Name"){
+                    self.thing.findLocation()
+                }
+                Button("Find Location from Coordinates"){
+                    self.thing.findCoordinates()
                 }
                 MapDisplayView(thing: thing)
             }

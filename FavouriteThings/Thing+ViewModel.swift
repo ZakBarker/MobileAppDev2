@@ -108,11 +108,11 @@ extension Thing{
         thing.typeField = "Type:"
         thing.notesField = "Notes:"
         thing.purposeField = "Purpose:"
-        thing.locationName = "Griffith"
-        thing.locationX = "0"
-        thing.locationY = "0"
-        thing.latitude = 0
-        thing.longitude = 0
+        thing.locationName = "New York"
+        thing.locationX = "40.7"
+        thing.locationY = "-74.007"
+        thing.latitude = 40.7
+        thing.longitude = -74.007
         thing.isUpdating = false
     }
     
@@ -130,6 +130,8 @@ extension Thing{
             self.longitude = position.longitude
             self.locationXStr = "\(position.latitude)"
             self.locationYStr = "\(position.longitude)"
+            print("--------- \(self.latitude)")
+            print("--------- \(self.locationXStr)")
         }
     }
     
